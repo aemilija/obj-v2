@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <vector>
 
+//to do: man rodos reikia padaryti taip, kad visiem studentams butu vienodas nd skaicius, tai pakeisti dalykus, padaryti isimtis su ifais;
 using namespace std;
 
 struct Stud { //sukuriama studento struktura, kurioje saugoma vardas, pavarde, namu darbu (2) ir egzamino pazymiai
@@ -32,14 +33,14 @@ double galutinis(const Stud &student) {
 };
 
 //funkcija, kuria ivedami studentu duomenys - vardas, pavarde, namu darbu skaicius (pagal si skaiciu suvedami nd pazymiai), ir egzamino pazymys
-void ivestiDuomenisRanka(vector<Stud> &student) {
+void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
     for (int i = 0; i < student.size(); ++i) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz vektoriaus dydi (studentu skaiciu)
         cout << "Iveskite " << i + 1 << " studento varda ir pavarde: ";
         cin >> student[i].vardas >> student[i].pavarde;
         
-        int ndSkaicius;
-        cout << "Iveskite " << student[i].vardas << " namu darbu skaiciu: ";
-        cin >> ndSkaicius;
+        // int ndSkaicius;
+        // cout << "Iveskite " << student[i].vardas << " namu darbu skaiciu: ";
+        // cin >> ndSkaicius;
 
         student[i].nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
 
@@ -66,12 +67,16 @@ void spausdinti(vector<Stud> &student) {
 
 int main() {
     int n;
+    int ndSkaicius;
 
     cout << "Iveskite studentu skaiciu: ";
     cin >> n;
 
+    cout << "Iveskite namu darbu skaiciu: ";
+    cin >> ndSkaicius;
+
     vector<Stud> studentai(n);
-    ivestiDuomenisRanka(studentai);
+    ivestiDuomenisRanka(studentai, ndSkaicius);
     spausdinti(studentai);
 
     return 0;
