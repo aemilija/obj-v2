@@ -43,8 +43,8 @@ void ivestiDuomenisRanka(vector<Stud> &student) {
 
         student[i].nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
 
+        cout << "Iveskite " << student[i].vardas << " namu darbu pazymius (" << ndSkaicius << "): ";
         for (int j = 0; j < ndSkaicius; ++j) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
-            cout << "Iveskite " << j + 1 << " namu darbu pazymi: ";
             cin >> student[i].nd[j];
         }
 
