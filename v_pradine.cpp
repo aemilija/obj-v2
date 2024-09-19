@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <algorithm>
 
 //to do: man rodos reikia padaryti taip, kad visiem studentams butu vienodas nd skaicius, tai pakeisti dalykus, padaryti isimtis su ifais;
 using namespace std;
@@ -25,11 +26,31 @@ double ndVidurkis(const Stud &student) {
     return ndSuma / student.nd.size();
 };
 
+//funkcija,kuri apskaiciuoja nd mediana
+double ndMediana(const Stud &student) {
+    if (student.nd.empty())
+        return 0.0;
 
-//funkcija, kuri suskaiciuoja galutini rezultata, naudojantis formule 0.4*ndVid+0.6+egz
-double galutinis(const Stud &student) {
-    double ndVid = ndVidurkis(student);
-    return 0.4 * ndVid + 0.6 * student.egz;
+    vector<int> arr = student.nd;
+    int n = arr.size(); //suskaiciuoja, kiek elementu yra sarase
+    
+    sort(arr.begin(), arr.end()); //surusiuoja sarasa
+
+    if (n % 2 == 1) //kai nelyginis elementu skaicius
+        return arr[n/2];
+    else //kai lyginis elementu skaicius
+        return (arr[n/2 - 1] + arr[n/2]) / 2.0;
+};
+
+
+//funkcija, kuri suskaiciuoja galutini rezultata, naudojantis formule 0.4*ndPasirinkimas+0.6+egz, pagal pasirinkima ar skaiciuos pagal vidurki ar mediana
+double galutinis(const Stud &student, char pasirinkimas) {
+    double ndPasirinkimas; 
+    if (pasirinkimas == 'M' || pasirinkimas == 'm')
+            ndPasirinkimas = ndMediana(student);
+        else
+            ndPasirinkimas = ndVidurkis(student);
+    return 0.4 * ndPasirinkimas + 0.6 * student.egz;
 };
 
 //funkcija, kuria ivedami studentu duomenys - vardas, pavarde, namu darbu skaicius (pagal si skaiciu suvedami nd pazymiai), ir egzamino pazymys
@@ -55,19 +76,23 @@ void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
 };
 
 //funkcija, kuri isspausdina studento varda, pavarde ir galutini vidurki 
-void spausdinti(vector<Stud> &student) {
-    cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << "Galutinis (Vid.)" << endl; //lenteles headeris - lygiuojame pagal kaire, set width 15 - tiek simboliu galima ivesti
+void spausdinti(vector<Stud> &student, char pasirinkimas) {
+    cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" 
+    << setw(20) << (pasirinkimas == 'M' || pasirinkimas == 'm' ? "Galutinis (Med.)" : "Galutinis(Vid.)") << endl; //lenteles headeris - lygiuojame pagal kaire, set width 15 - tiek simboliu galima ivesti
     cout << "------------------------------------------------------" << endl;
 
-    for (const auto& student : student) { //ciklas, kuris eina per visus studentus, apskaiciuoja galutini pazymi ir atspausdina duomenis
-        double galutinisPaz = galutinis(student);
-        cout << left << setw(15) << student.vardas << setw(15) << student.pavarde << setprecision(2) << galutinisPaz << endl;
+    for (const auto& student : student) {
+        double galutinisRez = galutinis(student, pasirinkimas);
+        cout << left << setw(15) << student.vardas << setw(15) << student.pavarde 
+        << setw(20) << fixed << setprecision(2) << galutinisRez << endl;
+
     }
 };
 
 int main() {
     int n;
     int ndSkaicius;
+    char pasirinkimas;
 
     cout << "Iveskite studentu skaiciu: ";
     cin >> n;
@@ -77,7 +102,11 @@ int main() {
 
     vector<Stud> studentai(n);
     ivestiDuomenisRanka(studentai, ndSkaicius);
-    spausdinti(studentai);
+
+    cout << "Ar norite matyti galutini vidurki (iveskite v) ar mediana (iveskite m)?";
+    cin >> pasirinkimas;
+
+    spausdinti(studentai, pasirinkimas);
 
     return 0;
 }
