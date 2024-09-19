@@ -75,6 +75,19 @@ void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
     }
 };
 
+//funkcija, kuri atsitiktinai generuoja studento pazymius (varda pavarde ivesti ranka)
+void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
+    for (int i = 0; i < student.size(); ++i) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz studentu skaiciu
+        cout << "Iveskite " << i + 1 << " studento varda ir pavarde: "; //ranka ivedame studentu vardus ir pavardes
+        cin >> student[i].vardas >> student[i].pavarde;
+        student[i].nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
+        for (int j = 0; j < ndSkaicius; ++j) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
+            student[i].nd[j] = rand() % 10 + 1; //sugeneruojami atsitiktiniai nd pazymiai intervale [1,10]
+        }
+        student[i].egz = rand() % 10 + 1;
+    }
+};
+
 //funkcija, kuri isspausdina studento varda, pavarde ir galutini vidurki 
 void spausdinti(vector<Stud> &student, char pasirinkimas) {
     cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" 
@@ -92,7 +105,8 @@ void spausdinti(vector<Stud> &student, char pasirinkimas) {
 int main() {
     int n;
     int ndSkaicius;
-    char pasirinkimas;
+    char ndPasirinkimas;
+    char duomPasirinkimas;
 
     cout << "Iveskite studentu skaiciu: ";
     cin >> n;
@@ -101,12 +115,19 @@ int main() {
     cin >> ndSkaicius;
 
     vector<Stud> studentai(n);
-    ivestiDuomenisRanka(studentai, ndSkaicius);
+
+    cout << "Ar norite duomenis ivesti ranka (iveskite r) ar sugeneruoti atsitiktinai (iveskite a)?";
+    cin >> duomPasirinkimas;
+
+    if (duomPasirinkimas == 'R' || duomPasirinkimas == 'r')
+        ivestiDuomenisRanka(studentai, ndSkaicius);
+    else if (duomPasirinkimas == 'A' || duomPasirinkimas == 'a')
+        atsitiktiniaiPazymiai(studentai, ndSkaicius);
 
     cout << "Ar norite matyti galutini vidurki (iveskite v) ar mediana (iveskite m)?";
-    cin >> pasirinkimas;
+    cin >> ndPasirinkimas;
 
-    spausdinti(studentai, pasirinkimas);
+    spausdinti(studentai, ndPasirinkimas);
 
     return 0;
 }
