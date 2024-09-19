@@ -17,4 +17,4 @@
 7. valymas(): atlaisvinama atmintis.
 
 Norint paleisti programą reikia sekti šiuos nurodymus: https://code.visualstudio.com/docs/cpp/config-mingw.
-Tada, atsidarius projektą aplanke paleisti jį terminale naudojant komandą g++ v_pradine.cpp -o v_pradine.exe.
+Tada, atsidarius projektą aplanke paleisti jį terminale naudojant komandą g++ v_pradine.cpp -o v_pradine.exe ir tada ./v_pradine.
