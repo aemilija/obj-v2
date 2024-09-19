@@ -23,7 +23,7 @@ double ndVidurkis(const Stud &student) {
     for (int pazymys : student.nd)
         ndSuma += pazymys;
 
-    return ndSuma / student.nd.size();
+    return ndSuma / static_cast<double>(student.nd.size());
 };
 
 //funkcija,kuri apskaiciuoja nd mediana
@@ -37,9 +37,9 @@ double ndMediana(const Stud &student) {
     sort(arr.begin(), arr.end()); //surusiuoja sarasa
 
     if (n % 2 == 1) //kai nelyginis elementu skaicius
-        return arr[n/2];
+        return static_cast<double>(arr[n/2]);
     else //kai lyginis elementu skaicius
-        return (arr[n/2 - 1] + arr[n/2]) / 2.0;
+        return static_cast<double>(arr[n/2 - 1] + arr[n/2]) / 2.0;
 };
 
 
@@ -102,12 +102,22 @@ void spausdinti(vector<Stud> &student, char pasirinkimas) {
     }
 };
 
+//funkcija, kuri isvalo duomenis
+void valymas(Stud & student) {
+    student.vardas.clear();
+    student.pavarde.clear();
+    student.nd.clear();
+}
+
 int main() {
     int n;
     int ndSkaicius;
     char ndPasirinkimas;
     char duomPasirinkimas;
 
+    cout << "Ar norite duomenis ivesti ranka (iveskite r) ar sugeneruoti atsitiktinai (iveskite a)?";
+    cin >> duomPasirinkimas;
+    
     cout << "Iveskite studentu skaiciu: ";
     cin >> n;
 
@@ -115,9 +125,6 @@ int main() {
     cin >> ndSkaicius;
 
     vector<Stud> studentai(n);
-
-    cout << "Ar norite duomenis ivesti ranka (iveskite r) ar sugeneruoti atsitiktinai (iveskite a)?";
-    cin >> duomPasirinkimas;
 
     if (duomPasirinkimas == 'R' || duomPasirinkimas == 'r')
         ivestiDuomenisRanka(studentai, ndSkaicius);
@@ -129,5 +136,8 @@ int main() {
 
     spausdinti(studentai, ndPasirinkimas);
 
+    for (auto &student : studentai) {
+        valymas(student);
+    }
     return 0;
-}
+};
