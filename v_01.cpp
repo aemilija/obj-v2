@@ -126,6 +126,10 @@ void spausdinti(vector<Stud> &student, char pasirinkimas) {
     << setw(20) << (pasirinkimas == 'M' || pasirinkimas == 'm' ? "Galutinis (Med.)" : "Galutinis(Vid.)") << endl; //lenteles headeris - lygiuojame pagal kaire, set width 15 - tiek simboliu galima ivesti
     cout << "------------------------------------------------------" << endl;
 
+    sort(student.begin(), student.end(), [](Stud &stud1, Stud &stud2) { //surusiuojame
+        return stud1.vardas < stud2.vardas; 
+        });
+
     for (const auto& student : student) {
         double galutinisRez = galutinis(student, pasirinkimas);
         cout << left << setw(15) << student.vardas << setw(15) << student.pavarde 
