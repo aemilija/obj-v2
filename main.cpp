@@ -10,6 +10,7 @@ int main() {
     char sortPasirinkimas;
     string failas;
 
+    vector<Stud> studentai;
 
     cout << "Ar norite duomenis ivesti ranka (iveskite r), sugeneruoti atsitiktinai (iveskite a) ar nuskaityti is failo (ivesite f)?";
     while(true) {
@@ -19,24 +20,63 @@ int main() {
         else
             cout <<"Neteisingas pasirinkimas, iveskite ranka (r), atsitiktinai (a), is failo (f)";
     }
-    vector<Stud> studentai;
 
     if (duomPasirinkimas == 'R' || duomPasirinkimas == 'r') {
-        cout << "Iveskite studentu skaiciu: ";
-        cin >> n;
+        do {
+            cout << "Iveskite studentu skaiciu: ";
+            cin >> n;
+            
+            if (cin.fail() || n < 0) {
+                cout << "klaida, iveskite teigiama sveika skaiciu." << endl;
+                cin.clear(); 
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                n = -1;
+            }
+        } while (n < 0);
+
         studentai.resize(n);
 
-        cout << "Iveskite namu darbu skaiciu: ";
-        cin >> ndSkaicius;
+        do {
+            cout << "Iveskite namu darbu skaiciu: ";
+            cin >> ndSkaicius;
+            
+            if (cin.fail() || ndSkaicius < 0) {
+                cout << "klaida, iveskite teigiama sveika skaiciu." << endl;
+                cin.clear(); 
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                ndSkaicius = -1;
+            }
+        } while (ndSkaicius < 0);
+
         ivestiDuomenisRanka(studentai, ndSkaicius);
     }
     else if (duomPasirinkimas == 'A' || duomPasirinkimas == 'a') {
-        cout << "Iveskite studentu skaiciu: ";
-        cin >> n;
+        do {
+            cout << "Iveskite studentu skaiciu: ";
+            cin >> n;
+            
+            if (cin.fail() || n < 0) {
+                cout << "klaida, iveskite teigiama sveika skaiciu." << endl;
+                cin.clear(); 
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                n = -1;
+            }
+        } while (n < 0);
+
         studentai.resize(n);
 
-        cout << "Iveskite namu darbu skaiciu: ";
-        cin >> ndSkaicius;
+        do {
+            cout << "Iveskite namu darbu skaiciu: ";
+            cin >> ndSkaicius;
+            
+            if (cin.fail() || ndSkaicius < 0) {
+                cout << "klaida, iveskite teigiama sveika skaiciu." << endl;
+                cin.clear(); 
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                ndSkaicius = -1;
+            }
+        } while (ndSkaicius < 0);
+        
         atsitiktiniaiPazymiai(studentai, ndSkaicius);
     }
     else if (duomPasirinkimas == 'F' || duomPasirinkimas == 'f')
@@ -73,7 +113,6 @@ int main() {
         });
     }
     
-
     cout << "Ar norite duomenis parodyti terminale (iveskite t) ar isvesti i faila (iveskite f)?";
     while(true) {
         cin >> outputPasirinkimas;
