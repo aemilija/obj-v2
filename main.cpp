@@ -12,7 +12,13 @@ int main() {
 
 
     cout << "Ar norite duomenis ivesti ranka (iveskite r), sugeneruoti atsitiktinai (iveskite a) ar nuskaityti is failo (ivesite f)?";
-    cin >> duomPasirinkimas;
+    while(true) {
+        cin >> duomPasirinkimas;
+        if (duomPasirinkimas == 'R' || duomPasirinkimas == 'r' || duomPasirinkimas == 'A' || duomPasirinkimas == 'a' || duomPasirinkimas == 'F' || duomPasirinkimas == 'f')
+            break;
+        else
+            cout <<"Neteisingas pasirinkimas, iveskite ranka (r), atsitiktinai (a), is failo (f)";
+    }
     vector<Stud> studentai;
 
     if (duomPasirinkimas == 'R' || duomPasirinkimas == 'r') {
@@ -39,10 +45,22 @@ int main() {
     }
     
     cout << "Ar norite matyti galutini vidurki (iveskite v) ar mediana (iveskite m)?";
-    cin >> ndPasirinkimas;
+     while(true) {
+        cin >> ndPasirinkimas;
+        if (ndPasirinkimas == 'V' || ndPasirinkimas == 'v' || ndPasirinkimas == 'M' || ndPasirinkimas == 'm')
+            break;
+        else
+            cout <<"Neteisingas pasirinkimas, iveskite vidurki (v) arba mediana (m)";
+    }
 
     cout << "Ar norite surusiuoti pagal studento varda (iveskite v) ar pagal pavarde (iveskite p)?";
-    cin >> sortPasirinkimas;
+    while(true) {
+        cin >> sortPasirinkimas;
+        if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v' || sortPasirinkimas == 'P' || sortPasirinkimas == 'p')
+            break;
+        else
+            cout <<"Neteisingas pasirinkimas, iveskite rusiuoti pagal varda (v) arba pavarde (p)";
+    }
 
     if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v') {
         sort(studentai.begin(), studentai.end(), [](Stud &stud1, Stud &stud2) {
@@ -57,7 +75,13 @@ int main() {
     
 
     cout << "Ar norite duomenis parodyti terminale (iveskite t) ar isvesti i faila (iveskite f)?";
-    cin >> outputPasirinkimas;
+    while(true) {
+        cin >> outputPasirinkimas;
+        if (outputPasirinkimas == 'T' || outputPasirinkimas == 't' || outputPasirinkimas == 'F' || outputPasirinkimas == 'f')
+            break;
+        else
+            cout <<"Neteisingas pasirinkimas, iveskite parodyti terminale (t) arba i faila (f)";
+    }
 
     if (outputPasirinkimas == 'T' || outputPasirinkimas == 't')
         spausdinti(studentai, ndPasirinkimas);
