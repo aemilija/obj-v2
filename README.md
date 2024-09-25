@@ -24,4 +24,4 @@
 Programoje studentai yra saugomi struktūroje, kurios atributai yra vardas, pavardė, namų darbų pažymis ir egzamino pažymys. Taip pat, programa yra sukurta per kelis .cpp ir .h failus suprantamumui ir funkcionalumui. Tam, kad užtikrintume teisingą programos veikimą yra panaudojamas išimčių valdymas (pvz.: įvedant duomenis turi būti teisingos reikšmės, esant kitaip metama klaida ir prašoma duomenis įvesti iš naujo; failas nėra atidaromas, jei neegzistuoja ir t. t.).
 
 Norint paleisti programą reikia sekti šiuos nurodymus: https://code.visualstudio.com/docs/cpp/config-mingw.
-Tada, atsidarius projektą aplanke paleisti jį terminale naudojant komandą g++ v_pradine.cpp -o v_pradine.exe ir tada ./v_pradine.
+Tada, atsidarius projektą aplanke paleisti jį terminale naudojant komandą g++ header.h Stud.cpp Stud.h main.cpp -o programa.exe ir tada ./programa.
