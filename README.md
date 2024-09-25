@@ -1,4 +1,5 @@
 **1-OJI UŽDUOTIS**
+
 Ši programa (suprogramuota C++ programavimo kalba) yra skirta apskaičiuoti studentų pažymius, remiantis jų namų darbų ir egzamino rezultatais.
 
 *Programos veikimo principas:*
