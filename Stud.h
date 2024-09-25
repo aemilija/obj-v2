@@ -14,4 +14,5 @@ void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius);
 void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius);
 void nuskaitytiFaila(vector<Stud> &student);
 void spausdinti(vector<Stud> &student, char pasirinkimas);
+void isvestiFaila(vector<Stud> student, char pasirinkimas);
 void valymas(Stud & student);
