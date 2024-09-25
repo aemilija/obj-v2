@@ -46,24 +46,39 @@ void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
         cout << "Iveskite " << i + 1 << " studento varda ir pavarde: ";
         cin >> student[i].vardas >> student[i].pavarde;
         
-        // int ndSkaicius;
-        // cout << "Iveskite " << student[i].vardas << " namu darbu skaiciu: ";
-        // cin >> ndSkaicius;
-
         student[i].nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
 
         cout << "Iveskite " << student[i].vardas << " namu darbu pazymius (" << ndSkaicius << "): ";
         for (int j = 0; j < ndSkaicius; ++j) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
-            cin >> student[i].nd[j];
+            bool validiIvestis = false;
+            do {
+                cin >> student[i].nd[j];
+                if (cin.fail() || student[i].nd[j] < 1 || student[i].nd[j] > 10) {
+                    cout << "klaida, iveskite skacius nuo 1 iki 10. " << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Iveskite " << student[i].vardas << " namu darbu pazymius (" << ndSkaicius << "): ";
+                }
+                else
+                    validiIvestis = true;
+            } while (!validiIvestis);
         }
+            do {
+                cout << "Iveskite " << student[i].vardas << " egzamino pazymi: ";
+                cin >> student[i].egz;
 
-        cout << "Iveskite " << student[i].vardas << " egzamino pazymi: ";
-        cin >> student[i].egz;
+                if (cin.fail() || student[i].egz < 1 || student[i].egz > 10) {
+                    cout << "klaida, iveskite skaciu nuo 1 iki 10. " << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+            } while (cin.fail() || student[i].egz < 1 || student[i].egz > 10);
     }
 };
 
 //funkcija, kuri atsitiktinai generuoja studento pazymius (varda pavarde ivesti ranka)
 void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
+    
     for (int i = 0; i < student.size(); ++i) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz studentu skaiciu
         cout << "Iveskite " << i + 1 << " studento varda ir pavarde: "; //ranka ivedame studentu vardus ir pavardes
         cin >> student[i].vardas >> student[i].pavarde;
@@ -120,13 +135,13 @@ void spausdinti(vector<Stud> &student, char pasirinkimas) {
     }
 };
 
+//funckija, kuri isveda duomenis i faila
 void isvestiFaila(vector<Stud> student, char pasirinkimas) {
-    ofstream file("rezultatai.txt");
+    ofstream file("rezultatai.txt"); //isvedama i faila pavadinimu rezultatai.txt
 
-    file << left << setw(15) << "Vardas" << setw(15) << "Pavarde" 
-    << setw(20) << (pasirinkimas == 'M' || pasirinkimas == 'm' ? "Galutinis (Med.)" : "Galutinis(Vid.)") << endl;
-    cout << "------------------------------------------------------" << endl;
-    
+    file << left << setw(15) << "Vardas" << setw(15) << "Pavarde" //analogiska spausdinimo f-jai
+    << setw(20) << (pasirinkimas == 'M' || pasirinkimas == 'm' ? "Galutinis (Med.)" : "Galutinis(Vid.)") << endl << "-----------------------------------------------" << endl;
+
     for (const auto& student : student) {
         double galutinisRez = galutinis(student, pasirinkimas);
         file << left << setw(15) << student.vardas << setw(15) << student.pavarde 
