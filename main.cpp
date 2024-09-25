@@ -12,20 +12,21 @@ int main() {
 
     vector<Stud> studentai;
 
-    cout << "Ar norite duomenis ivesti ranka (iveskite r), sugeneruoti atsitiktinai (iveskite a) ar nuskaityti is failo (ivesite f)?";
+    cout << "Ar norite duomenis ivesti ranka (iveskite r), sugeneruoti atsitiktinai (iveskite a) ar nuskaityti is failo (ivesite f)? ";
     while(true) {
         cin >> duomPasirinkimas;
         if (duomPasirinkimas == 'R' || duomPasirinkimas == 'r' || duomPasirinkimas == 'A' || duomPasirinkimas == 'a' || duomPasirinkimas == 'F' || duomPasirinkimas == 'f')
             break;
         else
-            cout <<"Neteisingas pasirinkimas, iveskite ranka (r), atsitiktinai (a), is failo (f)";
+            cout <<"Neteisingas pasirinkimas, iveskite ranka (r), atsitiktinai (a), is failo (f): ";
     }
 
     if (duomPasirinkimas == 'R' || duomPasirinkimas == 'r') {
         do {
             cout << "Iveskite studentu skaiciu: ";
             cin >> n;
-            
+            studentai.resize(n);
+
             if (cin.fail() || n < 0) {
                 cout << "klaida, iveskite teigiama sveika skaiciu." << endl;
                 cin.clear(); 
@@ -33,8 +34,6 @@ int main() {
                 n = -1;
             }
         } while (n < 0);
-
-        studentai.resize(n);
 
         do {
             cout << "Iveskite namu darbu skaiciu: ";
@@ -84,22 +83,22 @@ int main() {
         nuskaitytiFaila(studentai);
     }
     
-    cout << "Ar norite matyti galutini vidurki (iveskite v) ar mediana (iveskite m)?";
+    cout << "Ar norite skaiciuoti galutini pazymi pagal namu darbu vidurki (iveskite v) ar mediana (iveskite m)? ";
      while(true) {
         cin >> ndPasirinkimas;
         if (ndPasirinkimas == 'V' || ndPasirinkimas == 'v' || ndPasirinkimas == 'M' || ndPasirinkimas == 'm')
             break;
         else
-            cout <<"Neteisingas pasirinkimas, iveskite vidurki (v) arba mediana (m)";
+            cout <<"Neteisingas pasirinkimas, iveskite vidurki (v) arba mediana (m): ";
     }
 
-    cout << "Ar norite surusiuoti pagal studento varda (iveskite v) ar pagal pavarde (iveskite p)?";
+    cout << "Ar norite surusiuoti pagal studento varda (iveskite v) ar pagal pavarde (iveskite p)? ";
     while(true) {
         cin >> sortPasirinkimas;
         if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v' || sortPasirinkimas == 'P' || sortPasirinkimas == 'p')
             break;
         else
-            cout <<"Neteisingas pasirinkimas, iveskite rusiuoti pagal varda (v) arba pavarde (p)";
+            cout <<"Neteisingas pasirinkimas, iveskite rusiuoti pagal varda (v) arba pavarde (p): ";
     }
 
     if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v') {
@@ -113,13 +112,13 @@ int main() {
         });
     }
     
-    cout << "Ar norite duomenis parodyti terminale (iveskite t) ar isvesti i faila (iveskite f)?";
+    cout << "Ar norite duomenis parodyti terminale (iveskite t) ar isvesti i faila (iveskite f)? ";
     while(true) {
         cin >> outputPasirinkimas;
         if (outputPasirinkimas == 'T' || outputPasirinkimas == 't' || outputPasirinkimas == 'F' || outputPasirinkimas == 'f')
             break;
         else
-            cout <<"Neteisingas pasirinkimas, iveskite parodyti terminale (t) arba i faila (f)";
+            cout <<"Neteisingas pasirinkimas, iveskite parodyti terminale (t) arba i faila (f): ";
     }
 
     if (outputPasirinkimas == 'T' || outputPasirinkimas == 't')
