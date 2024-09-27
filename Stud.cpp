@@ -42,14 +42,14 @@ double galutinis(const Stud &student, char pasirinkimas) {
 
 //funkcija, kuria ivedami studentu duomenys - vardas, pavarde, namu darbu skaicius (pagal si skaiciu suvedami nd pazymiai), ir egzamino pazymys
 void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
-    for (int i = 0; i < student.size(); ++i) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz vektoriaus dydi (studentu skaiciu)
+    for (int i = 0; i < student.size(); i++) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz vektoriaus dydi (studentu skaiciu)
         cout << "Iveskite " << i + 1 << " studento varda ir pavarde: ";
         cin >> student[i].vardas >> student[i].pavarde;
         
         student[i].nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
 
         cout << "Iveskite " << student[i].vardas << " namu darbu pazymius (" << ndSkaicius << "): ";
-        for (int j = 0; j < ndSkaicius; ++j) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
+        for (int j = 0; j < ndSkaicius; j++) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
             bool validiIvestis = false;
             do {
                 cin >> student[i].nd[j];
@@ -79,47 +79,57 @@ void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
 //funkcija, kuri atsitiktinai generuoja studento pazymius (varda pavarde ivesti ranka)
 void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
     
-    for (int i = 0; i < student.size(); ++i) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz studentu skaiciu
+    for (int i = 0; i < student.size(); i++) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz studentu skaiciu
         cout << "Iveskite " << i + 1 << " studento varda ir pavarde: "; //ranka ivedame studentu vardus ir pavardes
         cin >> student[i].vardas >> student[i].pavarde;
         student[i].nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
-        for (int j = 0; j < ndSkaicius; ++j) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
+        for (int j = 0; j < ndSkaicius; j++) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
             student[i].nd[j] = rand() % 10 + 1; //sugeneruojami atsitiktiniai nd pazymiai intervale [1,10]
         }
         student[i].egz = rand() % 10 + 1;
     }
 };
 
-//funkcija, kuri nuskaito duomenis is failo
+//funkcija, kuri nuskaito faila
 void nuskaitytiFaila(vector<Stud> &student) {
-    ifstream file("kursiokai.txt"); //failas, kuri norim nuskaityti
-    string line;
+    ifstream file;
+    try {
+        file.open("studentai10.txt");
 
-    if (!file) {
-        throw runtime_error("Failo nepavyko atidaryti");
-    }
-
-    getline(file, line); //praleidziame pirma eilute
-
-    while(getline(file, line)) { //skaito po viena eilute
-        istringstream iss(line);
-        Stud stud;
-        iss >> stud.vardas >> stud.pavarde;
-
-        int paz;
-        while(iss >> paz) { //istraukiami visi pazymiai is eilutes ir sudedam i nd vektoriu
-            stud.nd.push_back(paz);
+        if (!file) {
+            throw runtime_error("failo nepavyko atidaryti");
         }
 
-        if (!stud.nd.empty()) { //tikrina ar nd vektorius nera tuscias
-            stud.egz = stud.nd.back(); //paskutinis nd vektoriaus pazymys yra egz pazymys
-            stud.nd.pop_back(); //pasalina paskutine  reiksme is nd vektoriaus
-        }
+        string line;
+        getline(file, line); // praleidziame pirma eilute
 
-        student.push_back(stud);
+        while (getline(file, line)) { // skaito po viena eilute
+            istringstream iss(line);
+            Stud stud;
+            iss >> stud.vardas >> stud.pavarde;
+
+            int paz;
+            while (iss >> paz) { // istraukiami visi pazymiai is eilutes ir sudedam i nd vektoriu
+                stud.nd.push_back(paz);
+            }
+
+            if (!stud.nd.empty()) { // tikrina ar nd vektorius nera tuscias
+                stud.egz = stud.nd.back(); // paskutinis nd vektoriaus pazymys yra egz pazymys
+                stud.nd.pop_back(); // pasalina paskutine reiksme is nd vektoriaus
+            }
+
+            student.push_back(stud); // Add to main vector
+        }
+        file.close();
+
+    } catch (const runtime_error &e) {
+        cerr << "Klaida: " << e.what() << endl;
+        exit(EXIT_FAILURE);
+    } catch (const exception &e) {
+        cerr << "Kita klaida:" << e.what() << endl;
+        exit(EXIT_FAILURE);
     }
-    file.close();
-};
+}
 
 //funkcija, kuri isspausdina studento varda, pavarde ir galutini vidurki 
 void spausdinti(vector<Stud> &student, char pasirinkimas) {
