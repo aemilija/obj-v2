@@ -29,7 +29,6 @@ double ndMediana(const Stud &student) {
         return static_cast<double>(arr[n/2 - 1] + arr[n/2]) / 2.0;
 };
 
-
 //funkcija, kuri suskaiciuoja galutini rezultata, naudojantis formule 0.4*ndPasirinkimas+0.6+egz, pagal pasirinkima ar skaiciuos pagal vidurki ar mediana
 double galutinis(const Stud &student, char pasirinkimas) {
     double ndPasirinkimas; 
@@ -91,10 +90,10 @@ void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
 };
 
 //funkcija, kuri nuskaito faila
-void nuskaitytiFaila(vector<Stud> &student) {
+void nuskaitytiFaila(vector<Stud> &student, string failoPav) {
     ifstream file;
     try {
-        file.open("studentai10.txt");
+        file.open(failoPav);
 
         if (!file) {
             throw runtime_error("failo nepavyko atidaryti");
