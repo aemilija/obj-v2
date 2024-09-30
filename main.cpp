@@ -8,7 +8,7 @@ int main() {
     char duomPasirinkimas;
     char outputPasirinkimas;
     char sortPasirinkimas;
-    string failas;
+    string failoPav;
 
     vector<Stud> studentai;
 
@@ -78,9 +78,10 @@ int main() {
         
         atsitiktiniaiPazymiai(studentai, ndSkaicius);
     }
-    else if (duomPasirinkimas == 'F' || duomPasirinkimas == 'f')
-    {
-        nuskaitytiFaila(studentai);
+    else if (duomPasirinkimas == 'F' || duomPasirinkimas == 'f') {
+        cout << "Iveskite failo, kuri norite nuskaityti pavadinima: ";
+        cin >> failoPav;
+        nuskaitytiFaila(studentai, failoPav);
     }
     
     cout << "Ar norite skaiciuoti galutini pazymi pagal namu darbu vidurki (iveskite v) ar mediana (iveskite m)? ";
