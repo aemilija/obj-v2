@@ -29,6 +29,7 @@ double ndMediana(const Stud &student) {
         return static_cast<double>(arr[n/2 - 1] + arr[n/2]) / 2.0;
 };
 
+
 //funkcija, kuri suskaiciuoja galutini rezultata, naudojantis formule 0.4*ndPasirinkimas+0.6+egz, pagal pasirinkima ar skaiciuos pagal vidurki ar mediana
 double galutinis(const Stud &student, char pasirinkimas) {
     double ndPasirinkimas; 
@@ -160,6 +161,50 @@ void isvestiFaila(vector<Stud> student, char pasirinkimas) {
     file.close();
     cout << "duomenys isvede i faila";
 };
+
+//funkcija, kuri generuoja failus su atsitiktiniais duomenimis
+void generuotiFailus(string failoPav, int studSk) {
+    vector<string> vardai = {"Tomas", "Egle", "Andrius", "Monika", "Mantas", "Ruta", "Justas", "Ieva", "Darius", "Laura", "Emilija", "Igne", "Viktorija", "Rokas", "Gintaras"};
+    vector<string> pavardes = {"Kairys", "Seskaukaite", "Pavilonis", "Zukauskaite", "Jankauskas", "Suminas", "Vasiliauskas", "Stankeviciene", "Petruskevicius", "Jakubavicius", "Abromaityte", "Katinas", "Zefyras", "Bublinskas", "Simenyte"};
+    
+    ofstream file;
+    file.open(failoPav);
+
+    vector<Stud> students;
+
+    file << left << setw(20) << "Vardas" << setw(20) << "Pavarde"; 
+    for (int i = 1; i <= 10; ++i) {
+        file << setw(10) << "ND" + to_string(i);
+    }
+    file << setw(10) << "Egz" << endl;
+
+    for (int i = 0; i < studSk; i++) { 
+        Stud student;
+        student.vardas = vardai[rand() % 15];
+        student.pavarde = pavardes[rand() % 15];
+
+        student.nd.resize(10);
+
+        for (int j = 0; j < 10; j++) { 
+            student.nd[j] = rand() % 10 + 1;
+        }
+
+        student.egz = rand() % 10 + 1;
+
+        file << setw(20) << student.vardas << setw(20) << student.pavarde;
+
+        for (const auto& paz : student.nd) {
+                file << setw(10) << paz;
+            }
+
+        file << setw(10) << student.egz << endl;
+
+        students.push_back(student);
+    }
+
+    file.close();
+    cout << "failai sugeneruoti." << endl;
+}
 
 //funkcija, kuri isvalo duomenis
 void valymas(Stud & student) {
