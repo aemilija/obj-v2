@@ -12,6 +12,13 @@ int main() {
 
     vector<Stud> studentai;
 
+    //uzkomentavau, kad kiekviena karta negeneruotu tu failu
+    // generuotiFailus("stud1000.txt", 1000);
+    // generuotiFailus("stud10000.txt", 10000);
+    // generuotiFailus("stud100000.txt", 100000);
+    // generuotiFailus("stud1000000.txt", 1000000);
+    // generuotiFailus("stud10000000.txt", 10000000);
+
     cout << "Ar norite duomenis ivesti ranka (iveskite r), sugeneruoti atsitiktinai (iveskite a) ar nuskaityti is failo (ivesite f)? ";
     while(true) {
         cin >> duomPasirinkimas;
