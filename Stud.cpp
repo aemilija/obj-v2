@@ -146,8 +146,8 @@ void spausdinti(vector<Stud> &student, char pasirinkimas) {
 };
 
 //funckija, kuri isveda duomenis i faila
-void isvestiFaila(vector<Stud> student, char pasirinkimas) {
-    ofstream file("rezultatai.txt"); //isvedama i faila pavadinimu rezultatai.txt
+void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav) {
+    ofstream file(failoPav); //isvedama i faila pavadinimu rezultatai.txt
 
     file << left << setw(15) << "Vardas" << setw(15) << "Pavarde" //analogiska spausdinimo f-jai
     << setw(20) << (pasirinkimas == 'M' || pasirinkimas == 'm' ? "Galutinis (Med.)" : "Galutinis(Vid.)") << endl << "-----------------------------------------------" << endl;
@@ -159,7 +159,7 @@ void isvestiFaila(vector<Stud> student, char pasirinkimas) {
     };
 
     file.close();
-    cout << "duomenys isvede i faila";
+    cout << "duomenys isvede i faila " << failoPav << endl;
 };
 
 //funkcija, kuri generuoja failus su atsitiktiniais duomenimis
@@ -203,7 +203,19 @@ void generuotiFailus(string failoPav, int studSk) {
     }
 
     file.close();
-    cout << "failai sugeneruoti." << endl;
+    cout << "failas sugeneruotas." << endl;
+}
+
+//funkcija, kuri paskirsto studentus i saunuolius ir nevykelius
+void paskirtytiStud(vector<Stud> &studentai, vector<Stud> &saunuoliai, vector<Stud> &nevykeliai, char pasirinkimas) {
+    for (auto &studentas : studentai) {
+        if (galutinis(studentas, pasirinkimas) >= 5.0) {
+            saunuoliai.push_back(studentas);
+        }
+        else {
+            nevykeliai.push_back(studentas);
+        }
+    }
 }
 
 //funkcija, kuri isvalo duomenis
