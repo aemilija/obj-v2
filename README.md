@@ -34,18 +34,33 @@
 Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal vidurkį ir studentų rūšiavimas pagal vardą.
 
 1000 įrašų spartos analizė:
+
+![image](https://github.com/user-attachments/assets/9b2335aa-042f-4e74-b613-a236f5905c81)
+
 ![image](https://github.com/user-attachments/assets/fa562570-3a6a-4dd8-aba3-fe602a704517)
 
 10000 įrašų spartos analizė:
+
+![image](https://github.com/user-attachments/assets/0d33a0b8-eab8-456f-b48b-06ab340990c4)
+
 ![image](https://github.com/user-attachments/assets/6d633d3f-ecc5-49d8-87ef-6751f9e6764b)
 
 100000 įrašų spartos analizė:
+
+![image](https://github.com/user-attachments/assets/4fc01a72-447a-45f0-837c-71a21c1c6dce)
+
 ![image](https://github.com/user-attachments/assets/03ff09b3-f831-4c04-a3ed-b34af6a21192)
 
 1000000 įrašų spartos analizė:
+
+![image](https://github.com/user-attachments/assets/5525eee9-ce1e-417d-aeca-c6e2083b8a2a)
+
 ![image](https://github.com/user-attachments/assets/d17c1d3a-8584-4934-8229-dc4a25df9cf0)
 
 10000000 įrašų spartos analizė:
+
+![image](https://github.com/user-attachments/assets/4addd01f-46b5-4600-9175-55a7e5564142)
+
 ![image](https://github.com/user-attachments/assets/0bed1f3e-5be8-4222-9248-da39a6b831e6)
 
 
