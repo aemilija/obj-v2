@@ -218,6 +218,11 @@ void paskirtytiStud(vector<Stud> &studentai, vector<Stud> &saunuoliai, vector<St
     }
 }
 
+//funkcija, kuri parodo dabartini laika
+std::chrono::steady_clock::time_point dabLaikas() {
+    return std::chrono::steady_clock::now();
+}
+
 //funkcija, kuri isvalo duomenis
 void valymas(Stud & student) {
     student.vardas.clear();
