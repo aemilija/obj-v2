@@ -120,10 +120,10 @@ int main() {
         });
     }
     
-    cout << "Ar norite duomenis parodyti terminale (iveskite t) ar isvesti i faila (iveskite f)? ";
+    cout << "Ar norite duomenis parodyti terminale (iveskite t), isvesti i faila paprastai (iveskite f) ar suskirstyti ir isvesti i faila (iveskite s)? ";
     while(true) {
         cin >> outputPasirinkimas;
-        if (outputPasirinkimas == 'T' || outputPasirinkimas == 't' || outputPasirinkimas == 'F' || outputPasirinkimas == 'f')
+        if (outputPasirinkimas == 'T' || outputPasirinkimas == 't' || outputPasirinkimas == 'F' || outputPasirinkimas == 'f' || outputPasirinkimas == 'S' || outputPasirinkimas == 's')
             break;
         else
             cout <<"Neteisingas pasirinkimas, iveskite parodyti terminale (t) arba i faila (f): ";
@@ -132,7 +132,15 @@ int main() {
     if (outputPasirinkimas == 'T' || outputPasirinkimas == 't')
         spausdinti(studentai, ndPasirinkimas);
     else if(outputPasirinkimas == 'F' || outputPasirinkimas == 'f')
-        isvestiFaila(studentai, ndPasirinkimas);
+        isvestiFaila(studentai, ndPasirinkimas, "rezultatai.txt");
+    else if (outputPasirinkimas == 'S' || outputPasirinkimas == 's') {
+        vector<Stud> saunuoliai;
+        vector<Stud> nevykeliai;
+        paskirtytiStud(studentai, saunuoliai, nevykeliai, ndPasirinkimas);
+        isvestiFaila(saunuoliai, ndPasirinkimas, "saunuoliai.txt");
+        isvestiFaila(nevykeliai, ndPasirinkimas, "nevykeliai.txt");
+
+    }
    
     for (auto &student : studentai) {
         valymas(student);
