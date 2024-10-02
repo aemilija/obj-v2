@@ -21,11 +21,16 @@ int main() {
     vector<Stud> studentai;
 
     //uzkomentavau, kad kiekviena karta negeneruotu tu failu
-    // generuotiFailus("stud1000.txt", 1000);
+    auto generuotiStart = dabLaikas();
+    generuotiFailus("stud1000.txt", 1000);
     // generuotiFailus("stud10000.txt", 10000);
     // generuotiFailus("stud100000.txt", 100000);
     // generuotiFailus("stud1000000.txt", 1000000);
     // generuotiFailus("stud10000000.txt", 10000000);
+    auto generuotiEnd = dabLaikas();
+    chrono::duration<double> generuotiDuration = generuotiEnd - generuotiStart;
+    std::cout << fixed << setprecision(5) << "Failo stud1000.txt generavimas uztruko: " << generuotiDuration.count() << " sekundes." << endl;
+
 
     cout << "Ar norite duomenis ivesti ranka (iveskite r), sugeneruoti atsitiktinai (iveskite a) ar nuskaityti is failo (ivesite f)? ";
     while(true) {
@@ -182,5 +187,6 @@ int main() {
     for (auto &student : studentai) {
         valymas(student);
     }
+        
     return 0;
 };
