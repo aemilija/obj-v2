@@ -16,5 +16,5 @@ void nuskaitytiFaila(vector<Stud> &student, string failoPav);
 void spausdinti(vector<Stud> &student, char pasirinkimas);
 void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav);
 void generuotiFailus(string failoPav, int studSk);
-void paskirtytiStud(vector<Stud> &studentai, char pasirinkimas);
+void paskirtytiStud(vector<Stud> &studentai, vector<Stud> &saunuoliai, vector<Stud> &nevykeliai, char pasirinkimas);
 void valymas(Stud & student);
