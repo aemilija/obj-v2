@@ -17,4 +17,5 @@ void spausdinti(vector<Stud> &student, char pasirinkimas);
 void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav);
 void generuotiFailus(string failoPav, int studSk);
 void paskirtytiStud(vector<Stud> &studentai, vector<Stud> &saunuoliai, vector<Stud> &nevykeliai, char pasirinkimas);
+std::chrono::steady_clock::time_point dabLaikas();
 void valymas(Stud & student);
