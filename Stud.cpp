@@ -170,8 +170,6 @@ void generuotiFailus(string failoPav, int studSk) {
     ofstream file;
     file.open(failoPav);
 
-    vector<Stud> students;
-
     file << left << setw(20) << "Vardas" << setw(20) << "Pavarde"; 
     for (int i = 1; i <= 10; ++i) {
         file << setw(10) << "ND" + to_string(i);
@@ -198,8 +196,6 @@ void generuotiFailus(string failoPav, int studSk) {
             }
 
         file << setw(10) << student.egz << endl;
-
-        students.push_back(student);
     }
 
     file.close();
