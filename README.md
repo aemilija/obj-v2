@@ -33,9 +33,9 @@
 **Buvo atlikta programos spartos analizė penkiems skirtingiems sugeneruotiems failams (1000, 10000, 100000, 1000000, 10000000 įrašų):**
 
 *Testavimo sistemos parametrai:*
-CPU: 11th Gen Intel(R) Core(TM) i5-11300H
-RAM: 8 GB
-SSD: 475 GB
+CPU: 11th Gen Intel(R) Core(TM) i5-11300H;
+RAM: 8 GB;
+SSD: 475 GB;
 
 Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal vidurkį ir studentų rūšiavimas pagal vardą.
 
