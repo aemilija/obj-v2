@@ -18,15 +18,22 @@ double ndMediana(const Stud &student) {
     if (student.nd.empty())
         return 0.0;
 
-    vector<int> arr = student.nd;
-    int n = arr.size(); //suskaiciuoja, kiek elementu yra sarase
+    list<int> arr(student.nd.begin(), student.nd.end()); //vektoriu pakeiciame i lista
+    arr.sort();
     
-    sort(arr.begin(), arr.end()); //surusiuoja sarasa
+    int n = arr.size(); //suskaiciuoja, kiek elementu yra sarase
+    auto it = arr.begin();
 
-    if (n % 2 == 1) //kai nelyginis elementu skaicius
-        return static_cast<double>(arr[n/2]);
-    else //kai lyginis elementu skaicius
-        return static_cast<double>(arr[n/2 - 1] + arr[n/2]) / 2.0;
+
+    if (n % 2 == 1) { //kai nelyginis elementu skaicius
+        advance(it, n/2);
+        return static_cast<double>(*it); 
+        }
+    else { //kai lyginis elementu skaicius
+        advance(it, (n/2) - 1);
+        return static_cast<double>(*it + *(++it)) / 2.0;
+
+    }
 };
 
 
@@ -91,6 +98,7 @@ void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
 };
 
 //funkcija, kuri nuskaito faila
+//galima naudoti f-ja capacity()
 void nuskaitytiFaila(vector<Stud> &student, string failoPav) {
     ifstream file;
     try {
