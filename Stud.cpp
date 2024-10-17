@@ -48,52 +48,53 @@ double galutinis(const Stud &student, char pasirinkimas) {
 };
 
 //funkcija, kuria ivedami studentu duomenys - vardas, pavarde, namu darbu skaicius (pagal si skaiciu suvedami nd pazymiai), ir egzamino pazymys
-void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
-    for (int i = 0; i < student.size(); i++) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz vektoriaus dydi (studentu skaiciu)
+void ivestiDuomenisRanka(list<Stud> &student, int ndSkaicius) {
+    int i = 0;
+    for (auto it = student.begin(); it != student.end(); ++it, ++i) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz vektoriaus dydi (studentu skaiciu)
         cout << "Iveskite " << i + 1 << " studento varda ir pavarde: ";
-        cin >> student[i].vardas >> student[i].pavarde;
+        cin >> it->vardas >> it->pavarde;
         
-        student[i].nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
+        it->nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
 
-        cout << "Iveskite " << student[i].vardas << " namu darbu pazymius (" << ndSkaicius << "): ";
+        cout << "Iveskite " << it->vardas << " namu darbu pazymius (" << ndSkaicius << "): ";
         for (int j = 0; j < ndSkaicius; j++) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
             bool validiIvestis = false;
             do {
-                cin >> student[i].nd[j];
-                if (cin.fail() || student[i].nd[j] < 1 || student[i].nd[j] > 10) {
+                cin >> it->nd[j];
+                if (cin.fail() || it->nd[j] < 1 || it->nd[j] > 10) {
                     cout << "klaida, iveskite skacius nuo 1 iki 10. " << endl;
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "Iveskite " << student[i].vardas << " namu darbu pazymius (" << ndSkaicius << "): ";
+                    cout << "Iveskite " << it->vardas << " namu darbu pazymius (" << ndSkaicius << "): ";
                 }
                 else
                     validiIvestis = true;
             } while (!validiIvestis);
         }
             do {
-                cout << "Iveskite " << student[i].vardas << " egzamino pazymi: ";
-                cin >> student[i].egz;
+                cout << "Iveskite " << it->vardas << " egzamino pazymi: ";
+                cin >> it->egz;
 
-                if (cin.fail() || student[i].egz < 1 || student[i].egz > 10) {
+                if (cin.fail() || it->egz < 1 || it->egz > 10) {
                     cout << "klaida, iveskite skaciu nuo 1 iki 10. " << endl;
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
-            } while (cin.fail() || student[i].egz < 1 || student[i].egz > 10);
+            } while (cin.fail() || it->egz < 1 || it->egz > 10);
     }
 };
 
 //funkcija, kuri atsitiktinai generuoja studento pazymius (varda pavarde ivesti ranka)
-void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
-    
-    for (int i = 0; i < student.size(); i++) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz studentu skaiciu
+void atsitiktiniaiPazymiai(list<Stud> &student, double ndSkaicius) {
+    int i = 0;
+    for (auto it = student.begin(); it != student.end(); ++it, ++i) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz studentu skaiciu
         cout << "Iveskite " << i + 1 << " studento varda ir pavarde: "; //ranka ivedame studentu vardus ir pavardes
-        cin >> student[i].vardas >> student[i].pavarde;
-        student[i].nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
+        cin >> it->vardas >> it->pavarde;
+        it->nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
         for (int j = 0; j < ndSkaicius; j++) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
-            student[i].nd[j] = rand() % 10 + 1; //sugeneruojami atsitiktiniai nd pazymiai intervale [1,10]
+            it->nd[j] = rand() % 10 + 1; //sugeneruojami atsitiktiniai nd pazymiai intervale [1,10]
         }
-        student[i].egz = rand() % 10 + 1;
+        it->egz = rand() % 10 + 1;
     }
 };
 
