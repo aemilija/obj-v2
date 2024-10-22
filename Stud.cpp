@@ -100,7 +100,7 @@ void atsitiktiniaiPazymiai(list<Stud> &student, double ndSkaicius) {
 
 //funkcija, kuri nuskaito faila
 //galima naudoti f-ja capacity()
-void nuskaitytiFaila(vector<Stud> &student, string failoPav) {
+void nuskaitytiFaila(list<Stud> &student, string failoPav) {
     ifstream file;
     try {
         file.open(failoPav);
@@ -127,7 +127,7 @@ void nuskaitytiFaila(vector<Stud> &student, string failoPav) {
                 stud.nd.pop_back(); // pasalina paskutine reiksme is nd vektoriaus
             }
 
-            student.push_back(stud); // Add to main vector
+            student.push_back(stud); 
         }
         file.close();
 
@@ -141,7 +141,7 @@ void nuskaitytiFaila(vector<Stud> &student, string failoPav) {
 }
 
 //funkcija, kuri isspausdina studento varda, pavarde ir galutini vidurki 
-void spausdinti(vector<Stud> &student, char pasirinkimas) {
+void spausdinti(list<Stud> &student, char pasirinkimas) {
     cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" 
     << setw(20) << (pasirinkimas == 'M' || pasirinkimas == 'm' ? "Galutinis (Med.)" : "Galutinis(Vid.)") << endl; //lenteles headeris - lygiuojame pagal kaire, set width 15 - tiek simboliu galima ivesti
     cout << "------------------------------------------------------" << endl;
@@ -154,8 +154,22 @@ void spausdinti(vector<Stud> &student, char pasirinkimas) {
     }
 };
 
+void spausdintiSuAdresu(list<Stud> &student, char pasirinkimas) {
+    cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" 
+    << setw(20) << (pasirinkimas == 'M' || pasirinkimas == 'm' ? "Galutinis (Med.)" : "Galutinis(Vid.)") 
+    << "Adresas" << endl; //lenteles headeris - lygiuojame pagal kaire, set width 15 - tiek simboliu galima ivesti
+    cout << "------------------------------------------------------" << endl;
+
+    for (const auto& student : student) {
+        double galutinisRez = galutinis(student, pasirinkimas);
+        cout << left << setw(15) << student.vardas << setw(15) << student.pavarde 
+        << setw(20) << fixed << setprecision(2) << galutinisRez << &student << endl;
+
+    }
+};
+
 //funckija, kuri isveda duomenis i faila
-void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav) {
+void isvestiFaila(list<Stud> student, char pasirinkimas, string failoPav) {
     ofstream file(failoPav); //isvedama i faila pavadinimu rezultatai.txt
 
     file << left << setw(15) << "Vardas" << setw(15) << "Pavarde" //analogiska spausdinimo f-jai
@@ -212,13 +226,15 @@ void generuotiFailus(string failoPav, int studSk) {
 }
 
 //funkcija, kuri paskirsto studentus i saunuolius ir nevykelius
-void paskirtytiStud(vector<Stud> &studentai, vector<Stud> &saunuoliai, vector<Stud> &nevykeliai, char pasirinkimas) {
-    for (auto &studentas : studentai) {
-        if (galutinis(studentas, pasirinkimas) >= 5.0) {
-            saunuoliai.push_back(studentas);
+void paskirtytiStud(list<Stud> &studentai, list<Stud> &saunuoliai, list<Stud> &nevykeliai, char pasirinkimas) {
+    for (auto it = studentai.begin(); it != studentai.end();) {
+        if (galutinis(*it, pasirinkimas) >= 5.0) {
+            saunuoliai.push_back(*it);
+            it = studentai.erase(it);
         }
         else {
-            nevykeliai.push_back(studentas);
+            nevykeliai.push_back(*it);
+            it = studentai.erase(it);
         }
     }
 }
