@@ -117,7 +117,66 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
    ![image](https://github.com/user-attachments/assets/e03b8bcb-b3bf-4318-a76c-d50ddd5e4483)
 
 </details>
+
+<details>
+   <summary>
+      <h3>
+         Konteinerių palyginimas:
+      </h3>
+   </summary>
    
+- 1000 irašų vector ir list spartos palyginimas:
+   
+| Operacija                          | Vector (s)  | List (s)  |
+|------------------------------------|-------------|-----------|
+| Nuskaitymas                        | 0,00342     | 0,01123   |
+| Rūšiavimas                         | 0,00139     | 0,00069   |
+| Paskirstymas                       | 0,00052     | 0,00046   |
+| Išvedimas (šaunuoliai)             | 0,01230     | 0,00645   |
+| Išvedimas (nevykėliai)             | 0,00550     | 0,00876   |
+
+- 10000 irašų vector ir list spartos palyginimas:
+
+| Operacija                          | Vector (s)  | List (s)  |
+|------------------------------------|-------------|-----------|
+| Nuskaitymas                        | 0,02844     | 0,03768   |
+| Rūšiavimas                         | 0,00949     | 0,00313   |
+| Paskirstymas                       | 0,00409     | 0,00341   |
+| Išvedimas (šaunuoliai)             | 0,07898     | 0,08625   |
+| Išvedimas (nevykėliai)             | 0,03133     | 0,03919   |
+
+- 100000 irašų vector ir list spartos palyginimas:
+
+| Operacija                          | Vector (s)  | List (s)  |
+|------------------------------------|-------------|-----------|
+| Nuskaitymas                        | 0,26184     | 0,26287   |
+| Rūšiavimas                         | 0,11514     | 0,05506   |
+| Paskirstymas                       | 0,04328     | 0,04822   |
+| Išvedimas (šaunuoliai)             | 0,65213     | 0,66420   |
+| Išvedimas (nevykėliai)             | 0,24594     | 0,28796   |
+
+- 1000000 irašų vector ir list spartos palyginimas:
+
+| Operacija                          | Vector (s)  | List (s)  |
+|------------------------------------|-------------|-----------|
+| Nuskaitymas                        | 2,45252     | 2,62928   |
+| Rūšiavimas                         | 1,41259     | 0,78329   |
+| Paskirstymas                       | 0,38858     | 0,44316   |
+| Išvedimas (šaunuoliai)             | 5,50744     | 7,33919   |
+| Išvedimas (nevykėliai)             | 2,63698     | 3,08263   |
+
+- 10000000 irašų vector ir list spartos palyginimas:
+
+| Operacija                          | Vector (s)  | List (s)  |
+|------------------------------------|-------------|-----------|
+| Nuskaitymas                        | 27,66645     | 25,16040   |
+| Rūšiavimas                         | 18,46688     | 12,86151   |
+| Paskirstymas                       | 7,59356     | 7,09569   |
+| Išvedimas (šaunuoliai)             | 104,45405     | 56,86274   |
+| Išvedimas (nevykėliai)             | 65,20350     | 39,59465   |
+
+
+</details>
 </details>
 
 </details>
