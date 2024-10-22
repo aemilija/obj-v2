@@ -86,7 +86,8 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 10000000 įrašų spartos analizė:
 
-![image](https://github.com/user-attachments/assets/0bed1f3e-5be8-4222-9248-da39a6b831e6)
+![image](https://github.com/user-attachments/assets/2f8186ad-2641-4633-b1ea-7f152ad4a328)
+
 </details>
 
 <details>
@@ -169,11 +170,11 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 | Operacija                          | Vector (s)  | List (s)  |
 |------------------------------------|-------------|-----------|
-| Nuskaitymas                        | 27,66645     | 25,16040   |
-| Rūšiavimas                         | 18,46688     | 12,86151   |
-| Paskirstymas                       | 7,59356     | 7,09569   |
-| Išvedimas (šaunuoliai)             | 104,45405     | 56,86274   |
-| Išvedimas (nevykėliai)             | 65,20350     | 39,59465   |
+| Nuskaitymas                        | 29,48737     | 25,16040   |
+| Rūšiavimas                         | 17,41753     | 12,86151   |
+| Paskirstymas                       | 7,73298     | 7,09569   |
+| Išvedimas (šaunuoliai)             | 58,75183     | 56,86274   |
+| Išvedimas (nevykėliai)             | 41,67963     | 39,59465   |
 
 
 </details>
