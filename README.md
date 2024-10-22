@@ -87,12 +87,39 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 10000000 įrašų spartos analizė:
 
 ![image](https://github.com/user-attachments/assets/0bed1f3e-5be8-4222-9248-da39a6b831e6)
+</details>
 
+<details>
+   <summary>
+      <h3>
+         Failų testavimas (list tipo konteinerio):
+      </h3>
    </summary>
+   
+   1000 įrašų spartos analizė:
+   
+   ![image](https://github.com/user-attachments/assets/111c876a-6bf1-4f39-af69-4eba2bc4a008)
+
+   10000 įrašų spartos analizė:
+
+   ![image](https://github.com/user-attachments/assets/d49d2f4b-659a-4aa5-8a3f-2ebd825fdf35)
+
+   100000 įrašų spartos analizė:
+
+   ![image](https://github.com/user-attachments/assets/a8a206da-dc9a-40ea-ac3d-9df25911d755)
+
+   1000000 įrašų spartos analizė:
+
+   ![image](https://github.com/user-attachments/assets/d876eccf-189a-4332-a265-8672e54939ca)
+
+   10000000 įrašų spartos analizė:
+
+   ![image](https://github.com/user-attachments/assets/e03b8bcb-b3bf-4318-a76c-d50ddd5e4483)
+
+</details>
    
 </details>
 
 </details>
-
 Norint paleisti programą reikia sekti šiuos nurodymus: https://code.visualstudio.com/docs/cpp/config-mingw.
 Tada, atsidarius projektą aplanke paleisti jį terminale naudojant komandą g++ header.h Stud.cpp Stud.h main.cpp -o programa.exe ir tada ./programa.
