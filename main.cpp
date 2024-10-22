@@ -18,11 +18,11 @@ int main() {
     chrono::duration<double> isvestiFailaSaunuoliaiDuration; 
     chrono::duration<double> isvestiFailaNevykeliaiDuration;
 
-    vector<Stud> studentai;
+    list<Stud> studentai;
 
     //uzkomentavau, kad kiekviena karta negeneruotu tu failu
     auto generuotiStart = dabLaikas();
-    generuotiFailus("stud1000.txt", 1000);
+    // generuotiFailus("stud1000.txt", 1000);
     // generuotiFailus("stud10000.txt", 10000);
     // generuotiFailus("stud100000.txt", 100000);
     // generuotiFailus("stud1000000.txt", 1000000);
@@ -117,10 +117,10 @@ int main() {
             cout <<"Neteisingas pasirinkimas, iveskite vidurki (v) arba mediana (m): ";
     }
 
-    cout << "Ar norite surusiuoti pagal studento varda (iveskite v) ar pagal pavarde (iveskite p)? ";
+    cout << "Ar norite surusiuoti pagal studento varda (iveskite v), pagal pavarde (iveskite p) ar pagal galutini pazymi (iveskite g)? ";
     while(true) {
         cin >> sortPasirinkimas;
-        if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v' || sortPasirinkimas == 'P' || sortPasirinkimas == 'p')
+        if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v' || sortPasirinkimas == 'P' || sortPasirinkimas == 'p' || sortPasirinkimas == 'G' || sortPasirinkimas == 'g')
             break;
         else
             cout <<"Neteisingas pasirinkimas, iveskite rusiuoti pagal varda (v) arba pavarde (p): ";
@@ -129,15 +129,21 @@ int main() {
     auto sortStart = dabLaikas();
     if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v') {
 
-        sort(studentai.begin(), studentai.end(), [](Stud &stud1, Stud &stud2) {
+        studentai.sort([&](Stud &stud1, Stud &stud2) {
             return stud1.vardas < stud2.vardas; 
         });
     }
     else if (sortPasirinkimas == 'P' || sortPasirinkimas == 'p') {
-        sort(studentai.begin(), studentai.end(), [](Stud &stud1, Stud &stud2) {
+        studentai.sort([&](Stud &stud1, Stud &stud2) {
             return stud1.pavarde < stud2.pavarde; 
+        }); 
+        }
+    else if (sortPasirinkimas == 'G' || sortPasirinkimas == 'g') {
+        studentai.sort([&](Stud &stud1, Stud &stud2) {
+            return galutinis(stud1, ndPasirinkimas) > galutinis(stud2, ndPasirinkimas);
         });
-    }
+        }
+        
     auto sortEnd = dabLaikas();
     sortDuration = sortEnd - sortStart;
     
@@ -150,13 +156,19 @@ int main() {
             cout <<"Neteisingas pasirinkimas, iveskite parodyti terminale (t) arba i faila (f): ";
     }
 
-    if (outputPasirinkimas == 'T' || outputPasirinkimas == 't')
-        spausdinti(studentai, ndPasirinkimas);
+    if (outputPasirinkimas == 'T' || outputPasirinkimas == 't') {
+        if (duomPasirinkimas == 'R' || duomPasirinkimas == 'r' || duomPasirinkimas == 'A' || duomPasirinkimas == 'a') {
+            spausdintiSuAdresu(studentai, ndPasirinkimas);
+        }
+        else {
+            spausdinti(studentai, ndPasirinkimas);
+        }
+    }
     else if(outputPasirinkimas == 'F' || outputPasirinkimas == 'f')
         isvestiFaila(studentai, ndPasirinkimas, "rezultatai.txt");
     else if (outputPasirinkimas == 'S' || outputPasirinkimas == 's') {
-        vector<Stud> saunuoliai;
-        vector<Stud> nevykeliai;
+        list<Stud> saunuoliai;
+        list<Stud> nevykeliai;
 
         auto paskirstytiStudStart = dabLaikas();
         paskirtytiStud(studentai, saunuoliai, nevykeliai, ndPasirinkimas);
@@ -176,6 +188,9 @@ int main() {
     }
     auto programaEnd = dabLaikas();
     chrono::duration<double> programaDuration = programaEnd - programaStart;
+
+    cout << " " << endl;
+    cout << "Programos spartos analize: " << endl;
 
     cout << fixed << setprecision(5) << "Failo "<< failoPav << " irasu nuskaitymo laikas: " << nuskaitytiFailaDuration.count() << " sekundes." << endl;
     cout << fixed << setprecision(5) << "Failo "<< failoPav << " irasu rusiavimo laikas: " << sortDuration.count() << " sekundes." << endl;
