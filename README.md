@@ -205,7 +205,13 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
    ***2 strategija:***
    Bendro studentų konteinerio skaidymas panaudojant tik vieną naują konteinerį: "nevykėliai". Tokiu būdu, jei studentas yra vargšiukas, jį turime įkelti į naująjį "nevykėlių" konteinerį ir ištrinti iš bendro studentai konteinerio. Studentai konteineryje liks tik šaunuoliai.
 
-
+| Įrašų skaičius | Vector (s) | List (s) |
+|----------------|------------|----------|
+| 1000           | 0,01785    | 0,00046  |
+| 10000          | 1,46294    | 0,00313  |
+| 100000         | 138,39729    | 0,04822  |
+| 1000000        | 0,38858    | 0,44316  |
+| 10000000       | 7,73298    | 7,09569  |
 
 
 </details>
