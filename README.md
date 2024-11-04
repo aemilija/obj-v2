@@ -35,7 +35,7 @@
 11. valymas(): atlaisvinama atmintis.
 </details>
 
-<details> <summary> <b> <h2> Testavimas: </b> </h4> </summary>
+<details> <summary> <b> <h2> Spartos analizė: </b> </h4> </summary>
 
 *Testavimo sistemos parametrai:*
 
@@ -179,6 +179,34 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 </details>
 </details>
+
+</details>
+
+<details>
+   <summary>
+      <h2>
+         <b>
+            Studentų rūšiavimo optimizavimas:
+         </b>
+      </h2>
+   </summary>
+
+   ***1 strategija:***
+   Bendro studentai konteinerio skaidymas į du naujus to paties tipo konteinerius: "šaunuolių" ir "nevykėlių". Studentas yra dviejuose konteineriuose: bendrame studentai ir viename iš suskaidytų (šaunuoliai arba nevykėliai). 
+
+| Įrašų skaičius | Vector (s) | List (s) |
+|----------------|------------|----------|
+| 1000           | 0,00052    | 0,00046  |
+| 10000          | 0,00409    | 0,00313  |
+| 100000         | 0,04328    | 0,04822  |
+| 1000000        | 0,38858    | 0,44316  |
+| 10000000       | 7,73298    | 7,09569  |
+
+   ***2 strategija:***
+   Bendro studentų konteinerio skaidymas panaudojant tik vieną naują konteinerį: "nevykėliai". Tokiu būdu, jei studentas yra vargšiukas, jį turime įkelti į naująjį "nevykėlių" konteinerį ir ištrinti iš bendro studentai konteinerio. Studentai konteineryje liks tik šaunuoliai.
+
+
+
 
 </details>
 Norint paleisti programą reikia sekti šiuos nurodymus: https://code.visualstudio.com/docs/cpp/config-mingw.
