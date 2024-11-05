@@ -213,6 +213,17 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 | 1000000        | -    | 0,45251  |
 | 10000000       | -    | 9,35102  |
 
+   ***3 strategija:***
+   Bendro studentų konteinerio skaidymas panaudojant strategiją, įtraukiant į ją "efektyvius" darbo su konteineriais metodus. Ši strategija vykdoma tik vector tipo konteineriui.
+
+   | Įrašų skaičius | Vector (s) | 
+|----------------|------------|
+| 1000           | -    |
+| 10000          | -    |
+| 100000         | -    | 
+| 1000000        | -    |
+| 10000000       | -    | 
+
 
 </details>
 Norint paleisti programą reikia sekti šiuos nurodymus: https://code.visualstudio.com/docs/cpp/config-mingw.
