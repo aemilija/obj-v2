@@ -21,15 +21,15 @@ int main() {
     list<Stud> studentai;
 
     //uzkomentavau, kad kiekviena karta negeneruotu tu failu
-    auto generuotiStart = dabLaikas();
+    // auto generuotiStart = dabLaikas();
     // generuotiFailus("stud1000.txt", 1000);
     // generuotiFailus("stud10000.txt", 10000);
     // generuotiFailus("stud100000.txt", 100000);
     // generuotiFailus("stud1000000.txt", 1000000);
     // generuotiFailus("stud10000000.txt", 10000000);
     auto generuotiEnd = dabLaikas();
-    chrono::duration<double> generuotiDuration = generuotiEnd - generuotiStart;
-    std::cout << fixed << setprecision(5) << "Failo stud1000.txt generavimas uztruko: " << generuotiDuration.count() << " sekundes." << endl;
+    // chrono::duration<double> generuotiDuration = generuotiEnd - generuotiStart;
+    // std::cout << fixed << setprecision(5) << "Failo stud1000.txt generavimas uztruko: " << generuotiDuration.count() << " sekundes." << endl;
 
 
     cout << "Ar norite duomenis ivesti ranka (iveskite r), sugeneruoti atsitiktinai (iveskite a) ar nuskaityti is failo (ivesite f)? ";
@@ -167,16 +167,15 @@ int main() {
     else if(outputPasirinkimas == 'F' || outputPasirinkimas == 'f')
         isvestiFaila(studentai, ndPasirinkimas, "rezultatai.txt");
     else if (outputPasirinkimas == 'S' || outputPasirinkimas == 's') {
-        list<Stud> saunuoliai;
         list<Stud> nevykeliai;
 
         auto paskirstytiStudStart = dabLaikas();
-        paskirtytiStud(studentai, saunuoliai, nevykeliai, ndPasirinkimas);
+        paskirtytiStud(studentai, nevykeliai, ndPasirinkimas);
         auto paskirstytiStudEnd = dabLaikas();
         paskirstytiStudDuration = paskirstytiStudEnd - paskirstytiStudStart;
 
         auto isvestiFailaSaunuoliaiStart = dabLaikas();
-        isvestiFaila(saunuoliai, ndPasirinkimas, "saunuoliai.txt");
+        isvestiFaila(studentai, ndPasirinkimas, "saunuoliai.txt");
         auto isvestiFailaSaunuoliaiEnd = dabLaikas();
         isvestiFailaSaunuoliaiDuration = isvestiFailaSaunuoliaiEnd - isvestiFailaSaunuoliaiStart;
 
