@@ -17,6 +17,6 @@ void spausdinti(list<Stud> &student, char pasirinkimas);
 void spausdintiSuAdresu(list<Stud> &student, char pasirinkimas);
 void isvestiFaila(list<Stud> student, char pasirinkimas, string failoPav);
 void generuotiFailus(string failoPav, int studSk);
-void paskirtytiStud(list<Stud> &studentai, list<Stud> &saunuoliai, list<Stud> &nevykeliai, char pasirinkimas);
+void paskirtytiStud(list<Stud> &studentai, list<Stud> &nevykeliai, char pasirinkimas);
 std::chrono::steady_clock::time_point dabLaikas();
 void valymas(Stud & student);
