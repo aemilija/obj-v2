@@ -207,22 +207,22 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 | Įrašų skaičius | Vector (s) | List (s) |
 |----------------|------------|----------|
-| 1000           | 0,01785    | 0.00070  |
+| 1000           | 0,01785    | 0,00070  |
 | 10000          | 1,46294    | 0,00761  |
 | 100000         | 138,39729    | 0,06321  |
 | 1000000        | -    | 0,45251  |
 | 10000000       | -    | 9,35102  |
 
    ***3 strategija:***
-   Bendro studentų konteinerio skaidymas panaudojant strategiją, įtraukiant į ją "efektyvius" darbo su konteineriais metodus. Ši strategija vykdoma tik vector tipo konteineriui.
+   Bendro studentų konteinerio skaidymas panaudojant 1-ą strategiją, įtraukiant į ją "efektyvius" darbo su konteineriais metodus. Ši strategija vykdoma tik vector tipo konteineriui.
 
    | Įrašų skaičius | Vector (s) | 
 |----------------|------------|
-| 1000           | -    |
-| 10000          | -    |
-| 100000         | -    | 
-| 1000000        | -    |
-| 10000000       | -    | 
+| 1000           | 0,00033    |
+| 10000          | 0,00460    |
+| 100000         | 0,03763    | 
+| 1000000        | 0,43216    |
+| 10000000       | 6,91909    | 
 
 
 </details>
