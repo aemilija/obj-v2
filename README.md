@@ -226,5 +226,21 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 
 </details>
-Norint paleisti programą reikia sekti šiuos nurodymus: https://code.visualstudio.com/docs/cpp/config-mingw.
-Tada, atsidarius projektą aplanke paleisti jį terminale naudojant komandą g++ header.h Stud.cpp Stud.h main.cpp -o programa.exe ir tada ./programa.
+
+<details>
+   <summary>
+      <h2>
+         <b>
+            Naudojimosi instrukcija:
+         </b>
+      </h2>
+   </summary>
+
+***Naudojant kompiliarorių:***
+1. Sekti nurodymus https://code.visualstudio.com/docs/cpp/config-mingw t. y. parsisiųsti VSCode ir reikalingą kompiliarių.
+2. Parsisiuntus projekto kodą ir jį atsidarius VSCode terminale paleisti komandą g++ header.h Stud.cpp Stud.h main.cpp -o programa.exe (čia sukompiliuojama), o norint paleisti naudoti komandą ./programa
+
+***Naudojant CMake:***
+1. Parsisiųsti CMake, sekant nurodymus https://cmake.org/download/ ir įsidiegti.
+2. 
+</details>
