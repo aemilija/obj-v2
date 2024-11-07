@@ -242,9 +242,10 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 ***Naudojant CMake:***
 1. Parsisiųsti CMake, sekant nurodymus https://cmake.org/download/ ir įsidiegti.
-2. Terminale paeiliuj paleisti šias komandas:
+2. Terminale paeiliuj paleisti šias komandas (arba aplanko, kurį norite naudoti viduje paleisti "run.bat" failą, tada komandų terminale leisti nereikės):
       * cmake CMakeLists.txt
       * cmake --build .
       * cmake --install .
       * cd Debug\
+3. Aplanke, turėjo atsirasti dar vienas aplankas, pavadinimu "Debug", paspaudus ant jo rasite programą - "studentai", paspaudus ant jos galėsite naudotis programa.
 </details>
