@@ -242,5 +242,9 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 ***Naudojant CMake:***
 1. Parsisiųsti CMake, sekant nurodymus https://cmake.org/download/ ir įsidiegti.
-2. 
+2. Terminale paeiliuj paleisti šias komandas:
+      * cmake CMakeLists.txt
+      * cmake --build .
+      * cmake --install .
+      * cd Debug\
 </details>
