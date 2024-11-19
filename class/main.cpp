@@ -10,6 +10,7 @@ int main() {
     char duomPasirinkimas;
     char outputPasirinkimas;
     char sortPasirinkimas;
+    char genPasirinkimas;
     string failoPav;
 
     chrono::duration<double> nuskaitytiFailaDuration;
@@ -20,17 +21,28 @@ int main() {
 
     vector<Stud> studentai;
     
-    //uzkomentavau, kad kiekviena karta negeneruotu tu failu
-    auto generuotiStart = dabLaikas();
-    // generuotiFailus("stud1000.txt", 1000);
-    // generuotiFailus("stud10000.txt", 10000);
-    // generuotiFailus("stud100000.txt", 100000);
-    // generuotiFailus("stud1000000.txt", 1000000);
-    // generuotiFailus("stud10000000.txt", 10000000);
-    auto generuotiEnd = dabLaikas();
-    chrono::duration<double> generuotiDuration = generuotiEnd - generuotiStart;
-    std::cout << fixed << setprecision(5) << "Failo stud1000.txt generavimas uztruko: " << generuotiDuration.count() << " sekundes." << endl;
+    cout << "Ar norite generuoti failus? (iveskite t (taip) arba n (ne))? ";
+    cin >> genPasirinkimas;
+    while(true) {
+        if (genPasirinkimas == 'T' || genPasirinkimas == 't' || genPasirinkimas == 'N' || genPasirinkimas == 'n') {
+            break;
+        }
+        else {
+            cout << "Neteisingas pasirinkimas, iveskit t (taip) arba n (ne): ";
+        }
+    }
 
+    if (genPasirinkimas == 'T' || genPasirinkimas == 't') {
+        auto generuotiStart = dabLaikas();
+        generuotiFailus("stud1000.txt", 1000);
+        generuotiFailus("stud10000.txt", 10000);
+        generuotiFailus("stud100000.txt", 100000);
+        generuotiFailus("stud1000000.txt", 1000000);
+        generuotiFailus("stud10000000.txt", 10000000);
+        auto generuotiEnd = dabLaikas();
+        chrono::duration<double> generuotiDuration = generuotiEnd - generuotiStart;
+        std::cout << fixed << setprecision(5) << "Failu generavimas uztruko: " << generuotiDuration.count() << " sekundes." << endl;
+    }
 
     cout << "Ar norite duomenis ivesti ranka (iveskite r), sugeneruoti atsitiktinai (iveskite a) ar nuskaityti is failo (ivesite f)? ";
     while(true) {
