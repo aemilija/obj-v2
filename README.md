@@ -237,18 +237,18 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
    **Kompiliavimo greitis (s):**
          
 | Optimizacijos lygis | Struct | Class |
-|--------------------|--------|-------|
-| *-o1*            | 4,58473 |       |
-| *-o2*            | 5,63571 |       |
-| *-o3*            | 5,43420 |       |
+|--------------------|--------|--------|
+| *-o1*            | 4,58473 | 5,17492 |
+| *-o2*            | 5,63571 | 5,53093 |
+| *-o3*            | 5,43420 | 6,16581 |
 
    **Failo dydis (KB):**
    
    | Optimizacijos lygis | Struct | Class |
 |--------------------|--------|-------|
-| *-o1*            |  223    |       |
-| *-o2*            |    212  |       |
-| *-o3*            |    225  |       |
+| *-o1*            |    223  |  243  |
+| *-o2*            |    212  |  233  |
+| *-o3*            |    225  |  264  |
 
          
 </details> 
