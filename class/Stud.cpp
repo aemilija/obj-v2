@@ -201,24 +201,32 @@ void generuotiFailus(string failoPav, int studSk) {
 
     for (int i = 0; i < studSk; i++) { 
         Stud student;
-        student.vardas = vardai[rand() % 15];
-        student.pavarde = pavardes[rand() % 15];
+        string v, p;
 
-        student.nd.resize(10);
+        v = vardai[rand() % 15];
+        p =pavardes[rand() % 15];
+
+        student.setVardas(v);
+        student.setPavarde(p);
+
+        student.getNd().resize(10);
 
         for (int j = 0; j < 10; j++) { 
-            student.nd[j] = rand() % 10 + 1;
+            int nd;
+            nd = rand() % 10 + 1;
+            student.setOnePaz(nd);
         }
+        int e;
+        e = rand() % 10 + 1;
+        student.setEgz(e);
 
-        student.egz = rand() % 10 + 1;
+        file << setw(20) << student.getVardas() << setw(20) << student.getPavarde();
 
-        file << setw(20) << student.vardas << setw(20) << student.pavarde;
-
-        for (const auto& paz : student.nd) {
+        for (const auto& paz : student.getNd()) {
                 file << setw(10) << paz;
             }
 
-        file << setw(10) << student.egz << endl;
+        file << setw(10) << student.getEgz() << endl;
     }
 
     file.close();
