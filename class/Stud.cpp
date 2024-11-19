@@ -123,16 +123,22 @@ void nuskaitytiFaila(vector<Stud> &student, string failoPav) {
         while (getline(file, line)) { // skaito po viena eilute
             istringstream iss(line);
             Stud stud;
-            iss >> stud.vardas >> stud.pavarde;
+            string v, p;
+
+            iss >> v >> p;
+            stud.setVardas(v);
+            stud.setPavarde(p);
 
             int paz;
             while (iss >> paz) { // istraukiami visi pazymiai is eilutes ir sudedam i nd vektoriu
-                stud.nd.push_back(paz);
+                stud.setOnePaz(paz);
             }
 
-            if (!stud.nd.empty()) { // tikrina ar nd vektorius nera tuscias
-                stud.egz = stud.nd.back(); // paskutinis nd vektoriaus pazymys yra egz pazymys
-                stud.nd.pop_back(); // pasalina paskutine reiksme is nd vektoriaus
+            if (!stud.getNd().empty()) { // tikrina ar nd vektorius nera tuscias
+                int e;
+                e = stud.getNd().back(); // paskutinis nd vektoriaus pazymys yra egz pazymys
+                stud.setEgz(e);
+                stud.getNd().pop_back(); // pasalina paskutine reiksme is nd vektoriaus
             }
 
             student.push_back(stud); // Add to main vector
@@ -171,7 +177,7 @@ void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav) {
 
     for (const auto& student : student) {
         double galutinisRez = galutinis(student, pasirinkimas);
-        file << left << setw(15) << student.vardas << setw(15) << student.pavarde 
+        file << left << setw(15) << student.getVardas() << setw(15) << student.getPavarde() 
         << setw(20) << fixed << setprecision(2) << galutinisRez << endl;
     };
 
