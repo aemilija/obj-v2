@@ -226,7 +226,32 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 
 </details>
+<details>
+   <summary>
+      <h2>
+         <b>
+            Kompiliatoriaus optimizavimo lygio analizė:
+         </b>
+   </summary>
+         
+   **Kompiliavimo greitis (s):**
+         
+| Optimizacijos lygis | Struct | Class |
+|--------------------|--------|-------|
+| *-o1*            | 4,58473 |       |
+| *-o2*            | 5,63571 |       |
+| *-o3*            | 5,43420 |       |
 
+   **Failo dydis (KB):**
+   
+   | Optimizacijos lygis | Struct | Class |
+|--------------------|--------|-------|
+| *-o1*            |  223    |       |
+| *-o2*            |    212  |       |
+| *-o3*            |    225  |       |
+
+         
+</details> 
 <details>
    <summary>
       <h2>
