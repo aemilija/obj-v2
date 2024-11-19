@@ -90,12 +90,20 @@ void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
     
     for (int i = 0; i < student.size(); i++) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz studentu skaiciu
         cout << "Iveskite " << i + 1 << " studento varda ir pavarde: "; //ranka ivedame studentu vardus ir pavardes
-        cin >> student[i].vardas >> student[i].pavarde;
-        student[i].nd.resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
+        string v, p;
+        cin >> v >> p;
+
+        student.at(i).setVardas(v);
+        student.at(i).setPavarde(p);
+        student[i].getNd().resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
         for (int j = 0; j < ndSkaicius; j++) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
-            student[i].nd[j] = rand() % 10 + 1; //sugeneruojami atsitiktiniai nd pazymiai intervale [1,10]
+            int paz;
+            paz = rand() % 10 + 1;
+            student.at(i).setOnePaz(paz); //sugeneruojami atsitiktiniai nd pazymiai intervale [1,10]
         }
-        student[i].egz = rand() % 10 + 1;
+        int e;
+        e = rand() % 10 + 1;
+        student.at(i).setEgz(e);
     }
 };
 
