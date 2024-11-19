@@ -129,13 +129,13 @@ int main() {
             cout <<"Neteisingas pasirinkimas, iveskite vidurki (v) arba mediana (m): ";
     }
 
-    cout << "Ar norite surusiuoti pagal studento varda (iveskite v) ar pagal pavarde (iveskite p)? ";
+    cout << "Ar norite surusiuoti pagal studento varda (iveskite v), pagal pavarde (iveskite p) ar pagal galutini pazymi (iveskite g)? ";
     while(true) {
         cin >> sortPasirinkimas;
-        if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v' || sortPasirinkimas == 'P' || sortPasirinkimas == 'p')
+        if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v' || sortPasirinkimas == 'P' || sortPasirinkimas == 'p' || sortPasirinkimas == 'G' || sortPasirinkimas == 'g' )
             break;
         else
-            cout <<"Neteisingas pasirinkimas, iveskite rusiuoti pagal varda (v) arba pavarde (p): ";
+            cout <<"Neteisingas pasirinkimas, iveskite rusiuoti pagal varda (v), pavarde (p) arba galutini pazymi (g): ";
     }
 
     auto sortStart = dabLaikas();
@@ -148,6 +148,11 @@ int main() {
     else if (sortPasirinkimas == 'P' || sortPasirinkimas == 'p') {
         sort(studentai.begin(), studentai.end(), [](Stud &stud1, Stud &stud2) {
             return stud1.getVardas() < stud2.getVardas(); 
+        });
+    }
+    else {
+        sort(studentai.begin(), studentai.end(), [&] (Stud &stud1, Stud &stud2) {
+            return galutinis(stud1, ndPasirinkimas) > galutinis(stud2, ndPasirinkimas);
         });
     }
     auto sortEnd = dabLaikas();
