@@ -31,16 +31,24 @@ class Stud {
         return nd;
     }
 
-    void setNd(const vector<int> n) {
+    void setNd(const vector<int> &n) {
         nd = n;
     }
 
-    int getOnePaz(const vector<int> &nd, int i) const {
+    int getOnePaz(int i) const {
         return nd.at(i);
     }
 
     void setOnePaz(int paz) {
         nd.push_back(paz);
+    }
+
+    int getEgz() const {
+        return egz;
+    }
+
+    void setEgz(int &e) {
+        egz = e;    
     }
 
     void valymas() {
