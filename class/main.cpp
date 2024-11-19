@@ -19,10 +19,10 @@ int main() {
     chrono::duration<double> isvestiFailaNevykeliaiDuration;
 
     vector<Stud> studentai;
-
+    
     //uzkomentavau, kad kiekviena karta negeneruotu tu failu
     auto generuotiStart = dabLaikas();
-    generuotiFailus("stud1000.txt", 1000);
+    // generuotiFailus("stud1000.txt", 1000);
     // generuotiFailus("stud10000.txt", 10000);
     // generuotiFailus("stud100000.txt", 100000);
     // generuotiFailus("stud1000000.txt", 1000000);
@@ -130,12 +130,12 @@ int main() {
     if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v') {
 
         sort(studentai.begin(), studentai.end(), [](Stud &stud1, Stud &stud2) {
-            return stud1.vardas < stud2.vardas; 
+            return stud1.getVardas() < stud2.getVardas(); 
         });
     }
     else if (sortPasirinkimas == 'P' || sortPasirinkimas == 'p') {
         sort(studentai.begin(), studentai.end(), [](Stud &stud1, Stud &stud2) {
-            return stud1.pavarde < stud2.pavarde; 
+            return stud1.getVardas() < stud2.getVardas(); 
         });
     }
     auto sortEnd = dabLaikas();
@@ -185,8 +185,9 @@ int main() {
     cout << fixed << setprecision(5) << "Programos veikimas uztruko: " << programaDuration.count() << " sekundes." << endl;
 
     for (auto &student : studentai) {
-        valymas(student);
+        student.valymas();
     }
+
         
     return 0;
 };
