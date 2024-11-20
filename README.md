@@ -249,21 +249,21 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 | Operacija                          | Struct (s)  | Class (s)  |
 |------------------------------------|-------------|-----------|
-| Nuskaitymas                        |      |    |
-| Rūšiavimas                         |      |    |
-| Paskirstymas                       |      |    |
-| Išvedimas (šaunuoliai)             |      |    |
-| Išvedimas (nevykėliai)             |      |    |
+| Nuskaitymas                        | 0,26569     | 1,53554   |
+| Rūšiavimas                         | 0,12325     | 0,24837   |
+| Paskirstymas                       | 0,04256     | 0,07276   |
+| Išvedimas (šaunuoliai)             | 0,78536     | 0,83173   |
+| Išvedimas (nevykėliai)             | 0,36876     | 0,36213   |
 
 - 1000000 irašų struct ir class spartos palyginimas:
 
 | Operacija                          | Vector (s)  | List (s)  |
 |------------------------------------|-------------|-----------|
-| Nuskaitymas                        |      |    |
-| Rūšiavimas                         |      |    |
-| Paskirstymas                       |      |    |
-| Išvedimas (šaunuoliai)             |      |    |
-| Išvedimas (nevykėliai)             |      |    |
+| Nuskaitymas                        | 2,72176     | 3,28820   |
+| Rūšiavimas                         | 1,91250     | 3,03190   |
+| Paskirstymas                       | 0,49343     | 0,67395   |
+| Išvedimas (šaunuoliai)             | 8,77235     | 8,74437   |
+| Išvedimas (nevykėliai)             | 6,48919     | 5,41000   |
 
       
    </details>
