@@ -8,8 +8,9 @@ class Stud {
     int egz;
 
     public:
-    Stud() : vardas(""), pavarde(""), nd{}, egz(0) { }
-    Stud(std::istream& is);
+    Stud() : vardas(""), pavarde(""), nd{}, egz(0) {}
+    ~Stud() {}
+    
 
     string getVardas() const {
         return vardas;
@@ -50,13 +51,6 @@ class Stud {
     void setEgz(int &e) {
         egz = e;    
     }
-
-    void valymas() {
-        vardas.clear();
-        pavarde.clear();
-        nd.clear();
-    }
-
 };
 
 double ndVidurkis(const Stud &student);
