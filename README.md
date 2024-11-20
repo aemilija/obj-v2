@@ -226,12 +226,55 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
 
 </details>
+
 <details>
    <summary>
       <h2>
          <b>
+            Struct ir Class palyginimas
+         </b>
+      </h2>
+   </summary>
+
+   <details>
+      <summary>
+         <h3>
+            <b>
+               Programos spartos palygimas:
+            </b>
+         </h3>
+      </summary>
+      
+- 100000 irašų struct ir class spartos palyginimas:
+
+| Operacija                          | Struct (s)  | Class (s)  |
+|------------------------------------|-------------|-----------|
+| Nuskaitymas                        |      |    |
+| Rūšiavimas                         |      |    |
+| Paskirstymas                       |      |    |
+| Išvedimas (šaunuoliai)             |      |    |
+| Išvedimas (nevykėliai)             |      |    |
+
+- 1000000 irašų struct ir class spartos palyginimas:
+
+| Operacija                          | Vector (s)  | List (s)  |
+|------------------------------------|-------------|-----------|
+| Nuskaitymas                        |      |    |
+| Rūšiavimas                         |      |    |
+| Paskirstymas                       |      |    |
+| Išvedimas (šaunuoliai)             |      |    |
+| Išvedimas (nevykėliai)             |      |    |
+
+      
+   </details>
+
+<details>
+   <summary>
+      <h3>
+         <b>
             Kompiliatoriaus optimizavimo lygio analizė:
          </b>
+      </h3>
    </summary>
          
    **Kompiliavimo greitis (s):**
@@ -252,6 +295,9 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 
          
 </details> 
+</details>
+
+
 <details>
    <summary>
       <h2>
