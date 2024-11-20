@@ -201,10 +201,5 @@ int main() {
     cout << fixed << setprecision(5) << "Failo "<< failoPav << " irasu nevykeliu irasymo i faila laikas: " << isvestiFailaNevykeliaiDuration.count() << " sekundes." << endl;
     cout << fixed << setprecision(5) << "Programos veikimas uztruko: " << programaDuration.count() << " sekundes." << endl;
 
-    for (auto &student : studentai) {
-        student.valymas();
-    }
-
-        
     return 0;
 };
