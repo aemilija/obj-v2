@@ -11,6 +11,7 @@ int main() {
     char outputPasirinkimas;
     char sortPasirinkimas;
     char genPasirinkimas;
+    char skirstPasirinkimas;
     string failoPav;
 
     chrono::duration<double> nuskaitytiFailaDuration;
@@ -20,8 +21,10 @@ int main() {
     chrono::duration<double> isvestiFailaNevykeliaiDuration;
 
     vector<Stud> studentai;
+    vector<Stud> saunuoliai;
+    vector<Stud> nevykeliai;
     
-    cout << "Ar norite generuoti failus? (iveskite t (taip) arba n (ne))? ";
+    cout << "Ar norite generuoti failus, iveskite t (taip) arba n (ne)? ";
     cin >> genPasirinkimas;
     while(true) {
         if (genPasirinkimas == 'T' || genPasirinkimas == 't' || genPasirinkimas == 'N' || genPasirinkimas == 'n') {
@@ -129,6 +132,29 @@ int main() {
             cout <<"Neteisingas pasirinkimas, iveskite vidurki (v) arba mediana (m): ";
     }
 
+    cout << "Ar norite suskirstyti studentus, iveskite t (taip) arba n (ne)? ";
+    while(true) {
+        cin >> skirstPasirinkimas;
+        if (skirstPasirinkimas == 'T' || skirstPasirinkimas == 't' || skirstPasirinkimas == 'N' || skirstPasirinkimas == 'n') {
+            break;
+        }
+        else {
+            cout << "Neteisingas pasirinkimas, iveskite t (taip) arba n (ne): ";
+        }
+    }
+
+    if (skirstPasirinkimas == 'T' || skirstPasirinkimas == 't') {
+        // vector<Stud> saunuoliai;
+        // vector<Stud> nevykeliai;
+
+        auto paskirstytiStudStart = dabLaikas();
+        paskirtytiStud(studentai, saunuoliai, nevykeliai, ndPasirinkimas);
+        auto paskirstytiStudEnd = dabLaikas();
+        paskirstytiStudDuration = paskirstytiStudEnd - paskirstytiStudStart;
+    }
+
+
+
     cout << "Ar norite surusiuoti pagal studento varda (iveskite v), pagal pavarde (iveskite p) ar pagal galutini pazymi (iveskite g)? ";
     while(true) {
         cin >> sortPasirinkimas;
@@ -140,25 +166,54 @@ int main() {
 
     auto sortStart = dabLaikas();
     if (sortPasirinkimas == 'V' || sortPasirinkimas == 'v') {
-
-        sort(studentai.begin(), studentai.end(), [](Stud &stud1, Stud &stud2) {
+        sort(studentai.begin(), studentai.end(), [&](Stud &stud1, Stud &stud2) {
             return stud1.getVardas() < stud2.getVardas(); 
         });
+
+        if (skirstPasirinkimas == 'T' || skirstPasirinkimas == 't') {
+            sort(saunuoliai.begin(), saunuoliai.end(), [&](Stud &stud1, Stud &stud2) {
+            return stud1.getVardas() < stud2.getVardas(); 
+            });
+
+            sort(nevykeliai.begin(), nevykeliai.end(), [&](Stud &stud1, Stud &stud2) {
+            return stud1.getVardas() < stud2.getVardas(); 
+            });
+        }
     }
     else if (sortPasirinkimas == 'P' || sortPasirinkimas == 'p') {
-        sort(studentai.begin(), studentai.end(), [](Stud &stud1, Stud &stud2) {
-            return stud1.getVardas() < stud2.getVardas(); 
+        sort(studentai.begin(), studentai.end(), [&](Stud &stud1, Stud &stud2) {
+            return stud1.getPavarde() < stud2.getPavarde(); 
         });
+
+        if (skirstPasirinkimas == 'T' || skirstPasirinkimas == 't') {
+            sort(saunuoliai.begin(), saunuoliai.end(), [&](Stud &stud1, Stud &stud2) {
+            return stud1.getPavarde() < stud2.getPavarde(); 
+            });
+
+            sort(nevykeliai.begin(), nevykeliai.end(), [&](Stud &stud1, Stud &stud2) {
+            return stud1.getPavarde() < stud2.getPavarde(); 
+            });
+        }
     }
     else {
         sort(studentai.begin(), studentai.end(), [&] (Stud &stud1, Stud &stud2) {
             return galutinis(stud1, ndPasirinkimas) > galutinis(stud2, ndPasirinkimas);
         });
+
+        if (skirstPasirinkimas == 'T' || skirstPasirinkimas == 't') {
+            sort(saunuoliai.begin(), saunuoliai.end(), [&](Stud &stud1, Stud &stud2) {
+            return galutinis(stud1, ndPasirinkimas) > galutinis(stud2, ndPasirinkimas);
+            });
+
+            sort(nevykeliai.begin(), nevykeliai.end(), [&](Stud &stud1, Stud &stud2) {
+            return galutinis(stud1, ndPasirinkimas) > galutinis(stud2, ndPasirinkimas);
+            });
+        }
     }
     auto sortEnd = dabLaikas();
     sortDuration = sortEnd - sortStart;
     
-    cout << "Ar norite duomenis parodyti terminale (iveskite t), isvesti i faila paprastai (iveskite f) ar suskirstyti ir isvesti i faila (iveskite s)? ";
+    cout << "Ar norite duomenis parodyti terminale (iveskite t) ar isvesti i faila (iveskite f)? ";
     while(true) {
         cin >> outputPasirinkimas;
         if (outputPasirinkimas == 'T' || outputPasirinkimas == 't' || outputPasirinkimas == 'F' || outputPasirinkimas == 'f' || outputPasirinkimas == 'S' || outputPasirinkimas == 's')
@@ -169,28 +224,44 @@ int main() {
 
     if (outputPasirinkimas == 'T' || outputPasirinkimas == 't')
         spausdinti(studentai, ndPasirinkimas);
-    else if(outputPasirinkimas == 'F' || outputPasirinkimas == 'f')
-        isvestiFaila(studentai, ndPasirinkimas, "rezultatai.txt");
-    else if (outputPasirinkimas == 'S' || outputPasirinkimas == 's') {
-        vector<Stud> saunuoliai;
-        vector<Stud> nevykeliai;
+    else if(outputPasirinkimas == 'F' || outputPasirinkimas == 'f') {
+        if (skirstPasirinkimas == 'T' || skirstPasirinkimas == 't') {
+            auto isvestiFailaSaunuoliaiStart = dabLaikas();
+            isvestiFaila(saunuoliai, ndPasirinkimas, "saunuoliai.txt");
+            auto isvestiFailaSaunuoliaiEnd = dabLaikas();
+            isvestiFailaSaunuoliaiDuration = isvestiFailaSaunuoliaiEnd - isvestiFailaSaunuoliaiStart;
 
-        auto paskirstytiStudStart = dabLaikas();
-        paskirtytiStud(studentai, saunuoliai, nevykeliai, ndPasirinkimas);
-        auto paskirstytiStudEnd = dabLaikas();
-        paskirstytiStudDuration = paskirstytiStudEnd - paskirstytiStudStart;
+            auto isvestiFailaNevykeliaiStart = dabLaikas();
+            isvestiFaila(nevykeliai, ndPasirinkimas, "nevykeliai.txt");
+            auto isvestiFailaNevykeliaiEnd = dabLaikas();
+            isvestiFailaNevykeliaiDuration = isvestiFailaNevykeliaiEnd - isvestiFailaNevykeliaiStart;
+        }
 
-        auto isvestiFailaSaunuoliaiStart = dabLaikas();
-        isvestiFaila(saunuoliai, ndPasirinkimas, "saunuoliai.txt");
-        auto isvestiFailaSaunuoliaiEnd = dabLaikas();
-        isvestiFailaSaunuoliaiDuration = isvestiFailaSaunuoliaiEnd - isvestiFailaSaunuoliaiStart;
-
-        auto isvestiFailaNevykeliaiStart = dabLaikas();
-        isvestiFaila(nevykeliai, ndPasirinkimas, "nevykeliai.txt");
-        auto isvestiFailaNevykeliaiEnd = dabLaikas();
-        isvestiFailaNevykeliaiDuration = isvestiFailaNevykeliaiEnd - isvestiFailaNevykeliaiStart;
-
+        else {
+            isvestiFaila(studentai, ndPasirinkimas, "studentai.txt");
+        }
     }
+
+    // else if (outputPasirinkimas == 'S' || outputPasirinkimas == 's') {
+        // vector<Stud> saunuoliai;
+        // vector<Stud> nevykeliai;
+
+        // auto paskirstytiStudStart = dabLaikas();
+        // paskirtytiStud(studentai, saunuoliai, nevykeliai, ndPasirinkimas);
+        // auto paskirstytiStudEnd = dabLaikas();
+        // paskirstytiStudDuration = paskirstytiStudEnd - paskirstytiStudStart;
+
+        // auto isvestiFailaSaunuoliaiStart = dabLaikas();
+        // isvestiFaila(saunuoliai, ndPasirinkimas, "saunuoliai.txt");
+        // auto isvestiFailaSaunuoliaiEnd = dabLaikas();
+        // isvestiFailaSaunuoliaiDuration = isvestiFailaSaunuoliaiEnd - isvestiFailaSaunuoliaiStart;
+
+        // auto isvestiFailaNevykeliaiStart = dabLaikas();
+        // isvestiFaila(nevykeliai, ndPasirinkimas, "nevykeliai.txt");
+        // auto isvestiFailaNevykeliaiEnd = dabLaikas();
+        // isvestiFailaNevykeliaiDuration = isvestiFailaNevykeliaiEnd - isvestiFailaNevykeliaiStart;
+
+    // }
     auto programaEnd = dabLaikas();
     chrono::duration<double> programaDuration = programaEnd - programaStart;
 
