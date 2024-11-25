@@ -8,10 +8,34 @@ class Stud {
     int egz;
 
     public:
+    //konstruktorius
     Stud() : vardas(""), pavarde(""), nd{}, egz(0) {}
-    ~Stud() {}
-    
+    //destruktorius
+    ~Stud() {
+        vardas.clear();
+        pavarde.clear();
+        nd.clear();
+        egz = 0;
+    }
 
+    //kopijavimo konstruktorius
+    Stud(const Stud &kitas) : vardas(kitas.vardas), pavarde(kitas.pavarde), nd(kitas.nd), egz(kitas.egz) {}
+    
+    //kopijavimo priskyrimo operatorius
+    Stud& operator = (const Stud &kitas) {
+        if (this != &kitas) {
+            vardas = kitas.vardas;
+            pavarde = kitas.pavarde;
+            nd = kitas.nd;
+            egz = kitas.egz;
+        }
+        return *this;
+    } 
+
+    //ivesties operatorius
+    //isvesties operatorius
+
+    //getteriaim, setteriai
     string getVardas() const {
         return vardas;
     }
