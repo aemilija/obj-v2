@@ -22,6 +22,7 @@ class Stud {
     Stud(const Stud &kitas) : vardas(kitas.vardas), pavarde(kitas.pavarde), nd(kitas.nd), egz(kitas.egz) {}
     
     //kopijavimo priskyrimo operatorius
+
     Stud& operator = (const Stud &kitas) {
         if (this != &kitas) {
             vardas = kitas.vardas;
@@ -33,6 +34,29 @@ class Stud {
     } 
 
     //ivesties operatorius
+    friend istream& operator >> (istream &is, Stud &stud) {
+        cout << "Iveskite studento varda pavarde: ";
+        is >> stud.vardas >> stud.pavarde;
+
+        cout << "Iveskite nd skaiciu: ";
+        int ndSkaicius;
+        is >> ndSkaicius;
+        stud.nd.clear();
+
+        cout << "Iveskite " << stud.getNd().size() << " namu darbu pazymius: ";
+        for (int i = 0; i < stud.nd.size(); ++i) {
+            int paz;
+            is >> paz;
+            stud.nd.push_back(paz);
+        }
+
+        cout << "Iveskite egzamino pazymi: ";
+        is >> stud.egz;
+
+        return is;
+
+    }
+
     //isvesties operatorius
 
     //getteriaim, setteriai
@@ -80,7 +104,7 @@ class Stud {
 double ndVidurkis(const Stud &student);
 double ndMediana(const Stud &student);
 double galutinis(const Stud &student, char pasirinkimas);
-void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius);
+void ivestiDuomenisRanka(vector<Stud> &student);
 void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius);
 void nuskaitytiFaila(vector<Stud> &student, string failoPav);
 void spausdinti(vector<Stud> &student, char pasirinkimas);
