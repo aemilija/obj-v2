@@ -42,46 +42,51 @@ double galutinis(const Stud &student, char pasirinkimas) {
 
 //funkcija, kuria ivedami studentu duomenys - vardas, pavarde, namu darbu skaicius (pagal si skaiciu suvedami nd pazymiai), ir egzamino pazymys
 void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
+
+
     for (int i = 0; i < student.size(); i++) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz vektoriaus dydi (studentu skaiciu)
-        string v, p;
+        cout << "Iveskite " << i + 1 << " studento duomenis: " << endl;
+        cin >> student.at(i);
 
-        cout << "Iveskite " << i + 1 << " studento varda ir pavarde: ";
-        cin >> v >> p;
+        // string v, p;
 
-        student.at(i).setVardas(v);
-        student.at(i).setPavarde(p);
+        // cout << "Iveskite " << i + 1 << " studento varda ir pavarde: ";
+        // cin >> v >> p;
+
+        // student.at(i).setVardas(v);
+        // student.at(i).setPavarde(p);
         
-        student.at(i).getNd().resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
+        // student.at(i).getNd().resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
 
-        cout << "Iveskite " << student.at(i).getVardas() << " namu darbu pazymius (" << ndSkaicius << "): ";
-        for (int j = 0; j < ndSkaicius; j++) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
-            bool validiIvestis = false;
-            do {
-                int paz;
-                cin >> paz;
-                student.at(i).setOnePaz(paz);
-                if (cin.fail() || student.at(i).getOnePaz(j) < 1 || student.at(i).getOnePaz(j) > 10) {
-                    cout << "klaida, iveskite skacius nuo 1 iki 10. " << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "Iveskite " << student.at(i).getVardas() << " namu darbu pazymius (" << ndSkaicius << "): ";
-                }
-                else 
-                    validiIvestis = true;
-            } while (!validiIvestis);
-        }
-            do {
-                cout << "Iveskite " << student.at(i).getVardas() << " egzamino pazymi: ";
-                int e;
-                cin >> e;
-                student.at(i).setEgz(e);
+        // cout << "Iveskite " << student.at(i).getVardas() << " namu darbu pazymius (" << ndSkaicius << "): ";
+        // for (int j = 0; j < ndSkaicius; j++) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
+        //     bool validiIvestis = false;
+        //     do {
+        //         int paz;
+        //         cin >> paz;
+        //         student.at(i).setOnePaz(paz);
+        //         if (cin.fail() || student.at(i).getOnePaz(j) < 1 || student.at(i).getOnePaz(j) > 10) {
+        //             cout << "klaida, iveskite skacius nuo 1 iki 10. " << endl;
+        //             cin.clear();
+        //             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        //             cout << "Iveskite " << student.at(i).getVardas() << " namu darbu pazymius (" << ndSkaicius << "): ";
+        //         }
+        //         else 
+        //             validiIvestis = true;
+        //     } while (!validiIvestis);
+        // }
+        //     do {
+        //         cout << "Iveskite " << student.at(i).getVardas() << " egzamino pazymi: ";
+        //         int e;
+        //         cin >> e;
+        //         student.at(i).setEgz(e);
 
-                if (cin.fail() || student.at(i).getEgz() < 1 || student.at(i).getEgz() > 10) {
-                    cout << "klaida, iveskite skaciu nuo 1 iki 10. " << endl;
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }
-            } while (cin.fail() || student.at(i).getEgz() < 1 || student.at(i).getEgz() > 10);
+        //         if (cin.fail() || student.at(i).getEgz() < 1 || student.at(i).getEgz() > 10) {
+        //             cout << "klaida, iveskite skaciu nuo 1 iki 10. " << endl;
+        //             cin.clear();
+        //             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        //         }
+        //     } while (cin.fail() || student.at(i).getEgz() < 1 || student.at(i).getEgz() > 10);
     }
 };
 
@@ -95,7 +100,7 @@ void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
 
         student.at(i).setVardas(v);
         student.at(i).setPavarde(p);
-        student[i].getNd().resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
+        student.at(i).getNd().resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
         for (int j = 0; j < ndSkaicius; j++) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
             int paz;
             paz = rand() % 10 + 1;
@@ -167,6 +172,7 @@ void spausdinti(vector<Stud> &student, char pasirinkimas) {
 
     }
 };
+
 
 //funckija, kuri isveda duomenis i faila
 void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav) {
