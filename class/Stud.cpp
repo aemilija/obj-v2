@@ -252,5 +252,55 @@ void paskirtytiStud(std::vector<Stud>& studentai, std::vector<Stud>& saunuoliai,
 //funkcija, kuri parodo dabartini laika
 std::chrono::steady_clock::time_point dabLaikas() {
     return std::chrono::steady_clock::now();
+};
+
+void patikrinti(bool a, const string& pav) {
+    if(a) {
+        cout << pav << " pavyko :)" << endl;
+    }
+    else {
+        cout << pav << " nepavyko :(" << endl;
+    }
 }
 
+void test() {
+    Stud s;
+    // suteikiamos reiksmes studentui
+    s.setVardas("Emilija");
+    s.setPavarde("Abromaityte");
+    s.setOnePaz(10);
+    s.setOnePaz(7);
+    s.setEgz(9);
+
+    // kopijavimo konstruktorius
+    Stud s2 = s;
+
+    patikrinti(s2.getVardas() == s.getVardas(), "kopijavimo konstruktorius - vardas");
+    patikrinti(s2.getPavarde() == s.getPavarde(), "kopijavimo konstruktorius - pavarde");
+    patikrinti(s2.getNd() == s.getNd(), "kopijavimo konstruktorius - nd");
+    patikrinti(s2.getEgz() == s.getEgz(), "kopijavimo konstruktorius - egz");
+
+    // kopijavimo priskyrimo konstruktorius
+    Stud s3;
+    s3 = s;
+
+    patikrinti(s3.getVardas() == s.getVardas(), "kopijavimo priskyrimo konstruktorius - vardas");
+    patikrinti(s3.getPavarde() == s.getPavarde(), "kopijavimo priskyrimo konstruktorius - pavarde");
+    patikrinti(s3.getNd() == s.getNd(), "kopijavimo priskyrimo konstruktorius - nd");
+    patikrinti(s3.getEgz() == s.getEgz(), "kopijavimo priskyrimo konstruktorius - egz");
+
+    // pakeiciame pradinio vektoriaus reiksmes
+    s.setVardas("Austeja");
+    s.setPavarde("Navikaite");
+
+    // patikriname ar kopijos nepasikeite
+    patikrinti(s2.getVardas() == "Emilija", "kopija s2 nepasikeite - vardas");
+    patikrinti(s2.getPavarde() == "Abromaityte", "kopija s2 nepasikeite - pavarde");
+    patikrinti(s3.getVardas() == "Emilija", "kopija s3 nepasikeite - vardas");
+    patikrinti(s3.getPavarde() == "Abromaityte", "kopija s3 nepasikeite - pavarde");
+
+    patikrinti(s2.getVardas() == "Austeja", "kopija s2 nepasikeite - vardas");
+    patikrinti(s3.getPavarde() == "Navikaite", "kopija s3 nepasikeite - pavarde");
+
+
+}
