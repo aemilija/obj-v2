@@ -70,18 +70,6 @@ int main() {
             }
         } while (n < 0);
 
-        do {
-            cout << "Iveskite namu darbu skaiciu: ";
-            cin >> ndSkaicius;
-            
-            if (cin.fail() || ndSkaicius < 0) {
-                cout << "klaida, iveskite teigiama sveika skaiciu." << endl;
-                cin.clear(); 
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                ndSkaicius = -1;
-            }
-        } while (ndSkaicius < 0);
-
         ivestiDuomenisRanka(studentai, ndSkaicius);
     }
     else if (duomPasirinkimas == 'A' || duomPasirinkimas == 'a') {
