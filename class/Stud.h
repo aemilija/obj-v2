@@ -16,6 +16,8 @@ class Stud {
         pavarde.clear();
         nd.clear();
         egz = 0;
+
+        // cout << "destrukorius ivykdytas" << endl;
     }
 
     //kopijavimo konstruktorius
@@ -109,7 +111,7 @@ class Stud {
         return egz;
     }
 
-    void setEgz(int &e) {
+    void setEgz(const int &e) {
         egz = e;    
     }
 };
@@ -125,3 +127,5 @@ void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav);
 void generuotiFailus(string failoPav, int studSk);
 void paskirtytiStud(vector<Stud> &studentai, vector<Stud> &saunuoliai, vector<Stud> &nevykeliai, char pasirinkimas);
 std::chrono::steady_clock::time_point dabLaikas();
+void patikrinti(bool a, const string& pav);
+void test();
