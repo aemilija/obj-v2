@@ -297,6 +297,42 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
 </details> 
 </details>
 
+<details>
+   <summary>
+      <h2>
+         <b>
+            Rule of Three. Įvesties ir išvesties operatoriai
+         </b>
+      </h2>
+   </summary>
+
+   **Rule of Three:**
+   - Programoje realizuoti destruktorius, kopijavimo ir kopijavimo priskyrimo konstruktoriai.
+   - Visų pirma studentui priskiriame vardą, pavardę, namų darbų ir egzamino pažymius.
+   Tada tą sukurtą studentą (s) nukopijuojame į kitą (Stud s2 = s), jeigu teisingai viskas įvykdyta, tai s ir s2 parametrai turėtų sutapti. Iš testavimo nuotraukos galima matyti, kad taip ir yra.
+   ![image](https://github.com/user-attachments/assets/55fd44d5-520b-482a-be82-cb3d1b3fe059)
+
+   - Norint ištestuoti kopijavimo priskyrimo konstruktorių reikia sukurti naują objektą (Stud s3) ir priskirti jam mūsų jau turimą studentą (s3 = s). Vėl patikriname ar s ir s3 parametrai sutampa. Iš testavimo nuotraukos galima matyti, kad taip ir yra.
+   ![image](https://github.com/user-attachments/assets/c7ccaabf-b11d-4100-ba90-4a523794307e)
+
+   - Tada pakeičiama studento (s) parametus - vardą ir pavardę, tikriname ar jo kopijos pasikeitė, ar ne. Jos neturėtų būti pasikeitusios. 
+   ![image](https://github.com/user-attachments/assets/a1f7f628-45fb-44fd-b4bd-b3c4bb55ea74)
+
+   *Pastaba:* pirmuose keturiuose testuose tikrinome, ar vardas/pavardė sutampa su senomis studento (s) reikšmėmis, paskutiniuose dviejuose tikrinome ar kopijų reikšmės yra lygios naujam studento (s) vardui ir pavardei. Taip nėra, vadinasi kopijavimo ir kopijavimo priskyrimo veikia tinkamai.
+
+**Įvesties ir išvesties operatoriai:**
+*Įvesties:*
+- Perdengtas įvesties operatorius ">>", dabar programoje vietoje sudėtingų ivedimo ciklų duomenų įvedimo funkcijoje galima tiesiog panaudoti perdengtą įvesties operatorių, kuris yra apibrėžtas Stud.h faile. Perdengtame operatoriuje įvedama - studento vardas, pavarde, namų darbų skaičius, namų darbų ir egzamino pažymiai.
+- Šis operatorius programoje yra panaudojamas norint įvesti studentų duomenis ranka.
+
+*Išvesties:*
+- Perdengtas išvesties operatorius "<<", dabar programoje norint išvesti studento duomenis yra panaudojamas šis operatorius, jis atrodo taip (žr. nuotrauką apačioje), jis išspausdina studento vardą, pavardę, egzamino rezultatą ir namų darbų pažymius. Jį galima panaudoti tiek išspausdinti duomenis ekrane/terminale, tiek išvesti į failą (gali prireikti daugiau formatavimo).
+  
+   ![image](https://github.com/user-attachments/assets/d4337712-a52a-4da1-ae8b-d88ae911afa0)
+
+
+   
+</details>
 
 <details>
    <summary>
