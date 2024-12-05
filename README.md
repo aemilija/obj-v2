@@ -310,12 +310,15 @@ Visiems testavimams buvo pasirinktas galutinio pažymio skaičiavimas pagal *vid
    - Programoje realizuoti destruktorius, kopijavimo ir kopijavimo priskyrimo konstruktoriai.
    - Visų pirma studentui priskiriame vardą, pavardę, namų darbų ir egzamino pažymius.
    Tada tą sukurtą studentą (s) nukopijuojame į kitą (Stud s2 = s), jeigu teisingai viskas įvykdyta, tai s ir s2 parametrai turėtų sutapti. Iš testavimo nuotraukos galima matyti, kad taip ir yra.
+
    ![image](https://github.com/user-attachments/assets/55fd44d5-520b-482a-be82-cb3d1b3fe059)
 
    - Norint ištestuoti kopijavimo priskyrimo konstruktorių reikia sukurti naują objektą (Stud s3) ir priskirti jam mūsų jau turimą studentą (s3 = s). Vėl patikriname ar s ir s3 parametrai sutampa. Iš testavimo nuotraukos galima matyti, kad taip ir yra.
+     
    ![image](https://github.com/user-attachments/assets/c7ccaabf-b11d-4100-ba90-4a523794307e)
 
-   - Tada pakeičiama studento (s) parametus - vardą ir pavardę, tikriname ar jo kopijos pasikeitė, ar ne. Jos neturėtų būti pasikeitusios. 
+   - Tada pakeičiama studento (s) parametus - vardą ir pavardę, tikriname ar jo kopijos pasikeitė, ar ne. Jos neturėtų būti pasikeitusios.
+     
    ![image](https://github.com/user-attachments/assets/a1f7f628-45fb-44fd-b4bd-b3c4bb55ea74)
 
    *Pastaba:* pirmuose keturiuose testuose tikrinome, ar vardas/pavardė sutampa su senomis studento (s) reikšmėmis, paskutiniuose dviejuose tikrinome ar kopijų reikšmės yra lygios naujam studento (s) vardui ir pavardei. Taip nėra, vadinasi kopijavimo ir kopijavimo priskyrimo veikia tinkamai.
