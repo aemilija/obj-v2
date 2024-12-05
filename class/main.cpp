@@ -12,6 +12,7 @@ int main() {
     char sortPasirinkimas;
     char genPasirinkimas;
     char skirstPasirinkimas;
+    char testPasirinkimas;
     string failoPav;
 
     chrono::duration<double> nuskaitytiFailaDuration;
@@ -23,6 +24,23 @@ int main() {
     vector<Stud> studentai;
     vector<Stud> saunuoliai;
     vector<Stud> nevykeliai;
+
+    cout << "Ar norite testuoti, iveskite t (taip) arba n (ne)? ";
+    cin >> testPasirinkimas;
+    while(true) {
+        if (testPasirinkimas == 'T' || testPasirinkimas == 't' || testPasirinkimas == 'N' || testPasirinkimas == 'n') {
+            break;
+        }
+        else {
+            cout << "Neteisingas pasirinkimas, iveskit t (taip) arba n (ne): ";
+        }
+    }
+
+    if (testPasirinkimas == 'T' || testPasirinkimas == 't') {
+        cout << "--- Testavimas ---" << endl;
+        test();
+        cout << "-------------------" << endl;
+    }
     
     cout << "Ar norite generuoti failus, iveskite t (taip) arba n (ne)? ";
     cin >> genPasirinkimas;
@@ -260,5 +278,4 @@ int main() {
     cout << fixed << setprecision(5) << "Failo "<< failoPav << " irasu nevykeliu irasymo i faila laikas: " << isvestiFailaNevykeliaiDuration.count() << " sekundes." << endl;
     cout << fixed << setprecision(5) << "Programos veikimas uztruko: " << programaDuration.count() << " sekundes." << endl;
 
-    return 0;
 };
