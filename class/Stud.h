@@ -22,7 +22,6 @@ class Stud {
     Stud(const Stud &kitas) : vardas(kitas.vardas), pavarde(kitas.pavarde), nd(kitas.nd), egz(kitas.egz) {}
     
     //kopijavimo priskyrimo operatorius
-
     Stud& operator = (const Stud &kitas) {
         if (this != &kitas) {
             vardas = kitas.vardas;
@@ -43,8 +42,10 @@ class Stud {
         is >> ndSkaicius;
         stud.nd.clear();
 
-        cout << "Iveskite " << stud.getNd().size() << " namu darbu pazymius: ";
-        for (int i = 0; i < stud.nd.size(); ++i) {
+        
+
+        cout << "Iveskite " << ndSkaicius << " namu darbu pazymius: ";
+        for (int i = 0; i < ndSkaicius; ++i) {
             int paz;
             is >> paz;
             stud.nd.push_back(paz);
@@ -58,6 +59,18 @@ class Stud {
     }
 
     //isvesties operatorius
+    friend ostream& operator << (ostream &out, const Stud &stud) {
+        out << "Vardas: " << stud.getVardas() << endl;
+        out << "Pavarde: " << stud.getPavarde() << endl;
+        out << "Egzamino rezultatas: " << stud.getEgz() << endl;
+        out << "Pazymiai: ";
+        vector<int> paz = stud.getNd();
+        for (int i = 0; i < paz.size(); i++){
+            out << paz.at(i) << " ";
+        }
+        out << endl;
+        return out;
+    }
 
     //getteriaim, setteriai
     string getVardas() const {
@@ -104,10 +117,10 @@ class Stud {
 double ndVidurkis(const Stud &student);
 double ndMediana(const Stud &student);
 double galutinis(const Stud &student, char pasirinkimas);
-void ivestiDuomenisRanka(vector<Stud> &student);
+void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius);
 void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius);
 void nuskaitytiFaila(vector<Stud> &student, string failoPav);
-void spausdinti(vector<Stud> &student, char pasirinkimas);
+void spausdinti(vector<Stud>& studentai, char pasirinkimas);
 void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav);
 void generuotiFailus(string failoPav, int studSk);
 void paskirtytiStud(vector<Stud> &studentai, vector<Stud> &saunuoliai, vector<Stud> &nevykeliai, char pasirinkimas);
