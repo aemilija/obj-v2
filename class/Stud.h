@@ -1,15 +1,34 @@
 #include "header.h"
-
-class Stud {
-    private:
+class Zmogus {
+    protected:
     string vardas;
     string pavarde;
+
+    public:
+    //konstruktorius
+    Zmogus() : vardas(""), pavarde("") {}
+
+    //destruktorius
+    virtual ~Zmogus() = 0;
+
+    //getteriai, setteriai
+    string getVardas() const { return vardas; }
+    string getPavarde() const { return pavarde; }
+
+    string setVardas(const string& v) { return vardas = v; }
+    string setPavarde(const string& p) { return pavarde = p; }
+};
+
+inline Zmogus::~Zmogus() {}
+
+class Stud : public Zmogus {
+    private:
     vector<int> nd; 
     int egz;
 
     public:
     //konstruktorius
-    Stud() : vardas(""), pavarde(""), nd{}, egz(0) {}
+    Stud(const string& vardas, const string& pavarde, const vector<int> nd, const int egz) : Zmogus(vardas, pavarde), nd{}, egz(0) {}
     //destruktorius
     ~Stud() {
         vardas.clear();
@@ -43,8 +62,6 @@ class Stud {
         int ndSkaicius;
         is >> ndSkaicius;
         stud.nd.clear();
-
-        
 
         cout << "Iveskite " << ndSkaicius << " namu darbu pazymius: ";
         for (int i = 0; i < ndSkaicius; ++i) {
