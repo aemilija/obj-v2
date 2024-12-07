@@ -5,8 +5,9 @@ class Zmogus {
     string pavarde;
 
     public:
-    //konstruktorius
+    //konstruktoriai
     Zmogus() : vardas(""), pavarde("") {}
+    Zmogus(const string& v, const string&p) : vardas(v), pavarde(p) {}
 
     //destruktorius
     virtual ~Zmogus() = 0;
@@ -28,7 +29,9 @@ class Stud : public Zmogus {
 
     public:
     //konstruktorius
-    Stud(const string& vardas, const string& pavarde, const vector<int> nd, const int egz) : Zmogus(vardas, pavarde), nd{}, egz(0) {}
+    Stud() : Zmogus("", ""), nd{}, egz(0) {}
+    Stud(const string& v, const string& p, const vector<int> n, int e) : Zmogus(v, p), nd(n), egz(e) {}
+
     //destruktorius
     ~Stud() {
         vardas.clear();
@@ -40,7 +43,7 @@ class Stud : public Zmogus {
     }
 
     //kopijavimo konstruktorius
-    Stud(const Stud &kitas) : vardas(kitas.vardas), pavarde(kitas.pavarde), nd(kitas.nd), egz(kitas.egz) {}
+    Stud(const Stud &kitas) : Zmogus(kitas.vardas, kitas.pavarde), nd(kitas.nd), egz(kitas.egz) {}
     
     //kopijavimo priskyrimo operatorius
     Stud& operator = (const Stud &kitas) {
