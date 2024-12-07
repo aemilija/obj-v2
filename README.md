@@ -2,6 +2,17 @@
 
 Ši programa (suprogramuota C++ programavimo kalba) yra skirta apskaičiuoti studentų pažymius, remiantis jų namų darbų ir egzamino rezultatais.
 
+<h2>
+   <b>
+      Struktūra:
+   </b>
+</h2>
+Programoje yra sukurta abstrakti bazinė klasė - "Žmogus", kuri turi parametrus vardas ir pavardė. Išvestinė klasė "Stud" (išvesta iš "Žmogus") turi jos vardą ir pavardę ir savo parametrus - namų darbų ir egzamino pažymius.
+
+* Klasė "Žmogus" yra abstrakti, vadinasi jos objektų kūrimas yra negalimas!
+![image](https://github.com/user-attachments/assets/a93fbd6e-ca47-4508-b01e-496a0e28b065)
+
+
 <details>
    <summary> <B> <h2> Programos veikimo principas:</B> </h2>
 </summary>
