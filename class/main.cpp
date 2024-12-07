@@ -40,6 +40,7 @@ int main() {
         cout << "--- Testavimas ---" << endl;
         test();
         cout << "-------------------" << endl;
+        exit(0);
     }
     
     cout << "Ar norite generuoti failus, iveskite t (taip) arba n (ne)? ";
@@ -55,14 +56,16 @@ int main() {
 
     if (genPasirinkimas == 'T' || genPasirinkimas == 't') {
         auto generuotiStart = dabLaikas();
-        generuotiFailus("stud1000.txt", 1000);
-        generuotiFailus("stud10000.txt", 10000);
-        generuotiFailus("stud100000.txt", 100000);
-        generuotiFailus("stud1000000.txt", 1000000);
-        generuotiFailus("stud10000000.txt", 10000000);
+        generuotiFailus("stud100.txt", 100);
+        // generuotiFailus("stud1000.txt", 1000);
+        // generuotiFailus("stud10000.txt", 10000);
+        // generuotiFailus("stud100000.txt", 100000);
+        // generuotiFailus("stud1000000.txt", 1000000);
+        // generuotiFailus("stud10000000.txt", 10000000);
         auto generuotiEnd = dabLaikas();
         chrono::duration<double> generuotiDuration = generuotiEnd - generuotiStart;
         std::cout << fixed << setprecision(5) << "Failu generavimas uztruko: " << generuotiDuration.count() << " sekundes." << endl;
+        exit(0);
     }
 
     cout << "Ar norite duomenis ivesti ranka (iveskite r), sugeneruoti atsitiktinai (iveskite a) ar nuskaityti is failo (ivesite f)? ";
