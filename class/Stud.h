@@ -33,7 +33,7 @@ class Stud : public Zmogus {
     Stud(const string& v, const string& p, const vector<int> n, int e) : Zmogus(v, p), nd(n), egz(e) {}
 
     //destruktorius
-    ~Stud() {
+    ~Stud() override {
         vardas.clear();
         pavarde.clear();
         nd.clear();
@@ -94,23 +94,7 @@ class Stud : public Zmogus {
         return out;
     }
 
-    //getteriaim, setteriai
-    string getVardas() const {
-        return vardas;
-    }
-
-    void setVardas (const string &v) {
-        vardas = v;
-    }
-
-    string getPavarde() const {
-        return pavarde;
-    }
-
-    void setPavarde(const string &p) {
-        pavarde = p;
-    }
-
+    //getteriai, setteriai
     vector<int> getNd() const {
         return nd;
     }
