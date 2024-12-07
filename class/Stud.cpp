@@ -42,51 +42,9 @@ double galutinis(const Stud &student, char pasirinkimas) {
 
 //funkcija, kuria ivedami studentu duomenys - vardas, pavarde, namu darbu skaicius (pagal si skaiciu suvedami nd pazymiai), ir egzamino pazymys
 void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
-
-
     for (int i = 0; i < student.size(); i++) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz vektoriaus dydi (studentu skaiciu)
         cout << "Iveskite " << i + 1 << " studento duomenis: " << endl;
         cin >> student.at(i);
-
-        // string v, p;
-
-        // cout << "Iveskite " << i + 1 << " studento varda ir pavarde: ";
-        // cin >> v >> p;
-
-        // student.at(i).setVardas(v);
-        // student.at(i).setPavarde(p);
-        
-        // student.at(i).getNd().resize(ndSkaicius); //pakeicia studentu namu darbu vektoriaus dydi, kad sutaptu su ndSkaiciaus reiksme
-
-        // cout << "Iveskite " << student.at(i).getVardas() << " namu darbu pazymius (" << ndSkaicius << "): ";
-        // for (int j = 0; j < ndSkaicius; j++) { //iteruojame per studento namu darbus, tol kol j reiksme nebus didesne uz ndSkaiciaus reiksme
-        //     bool validiIvestis = false;
-        //     do {
-        //         int paz;
-        //         cin >> paz;
-        //         student.at(i).setOnePaz(paz);
-        //         if (cin.fail() || student.at(i).getOnePaz(j) < 1 || student.at(i).getOnePaz(j) > 10) {
-        //             cout << "klaida, iveskite skacius nuo 1 iki 10. " << endl;
-        //             cin.clear();
-        //             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        //             cout << "Iveskite " << student.at(i).getVardas() << " namu darbu pazymius (" << ndSkaicius << "): ";
-        //         }
-        //         else 
-        //             validiIvestis = true;
-        //     } while (!validiIvestis);
-        // }
-        //     do {
-        //         cout << "Iveskite " << student.at(i).getVardas() << " egzamino pazymi: ";
-        //         int e;
-        //         cin >> e;
-        //         student.at(i).setEgz(e);
-
-        //         if (cin.fail() || student.at(i).getEgz() < 1 || student.at(i).getEgz() > 10) {
-        //             cout << "klaida, iveskite skaciu nuo 1 iki 10. " << endl;
-        //             cin.clear();
-        //             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        //         }
-        //     } while (cin.fail() || student.at(i).getEgz() < 1 || student.at(i).getEgz() > 10);
     }
 };
 
@@ -271,6 +229,9 @@ void test() {
     s.setOnePaz(10);
     s.setOnePaz(7);
     s.setEgz(9);
+ 
+    cout << "Isvesties operatoriaus testavimas: " << endl;
+    cout << s << endl;
 
     // kopijavimo konstruktorius
     Stud s2 = s;
@@ -301,6 +262,5 @@ void test() {
 
     patikrinti(s2.getVardas() == "Austeja", "kopija s2 nepasikeite - vardas");
     patikrinti(s3.getPavarde() == "Navikaite", "kopija s3 nepasikeite - pavarde");
-
 
 }
