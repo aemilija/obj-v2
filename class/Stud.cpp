@@ -1,6 +1,11 @@
 #include "Stud.h"
 
-//funkcija, kuri suskaiciuoja namu darbu vidurki
+/**
+ * @brief Funkcija, kuri suskaiciuoja studentu namu darbu vidurkis
+ * @param student Studentu vektorius, kuriu namu darbu vidurkis skaicuojamas
+ * @return Grazinamas namu darbu vidurkis
+ */
+
 double ndVidurkis(const Stud &student) { 
     if (student.getNd().empty())
         return 0.0;
@@ -13,7 +18,12 @@ double ndVidurkis(const Stud &student) {
     return ndSuma / static_cast<double>(student.getNd().size());
 };
 
-//funkcija,kuri apskaiciuoja nd mediana
+/**
+ * @brief Funkcija, kuri suskaiciuoja studentu namu darbu mediana
+ * @param student Studentu vektorius, kuriu namu darbu mediana skaicuojama
+ * @return Grazinama namu darbu mediana
+ */
+
 double ndMediana(const Stud &student) {
     if (student.getNd().empty())
         return 0.0;
@@ -29,8 +39,12 @@ double ndMediana(const Stud &student) {
         return static_cast<double>(arr[n/2 - 1] + arr[n/2]) / 2.0;
 };
 
-
-//funkcija, kuri suskaiciuoja galutini rezultata, naudojantis formule 0.4*ndPasirinkimas+0.6+egz, pagal pasirinkima ar skaiciuos pagal vidurki ar mediana
+/**
+ * @brief Funkcija, kuri suskaiciuoja galutini rezultata,  naudojantis formule 0.4*ndPasirinkimas+0.6+egz
+ * @param student Studentu vektorius, kuriu galutinis pazymys bus skaiciuojamas
+ * @param pasirinkimas Pasirinkimas (vidurkis arba mediana), pagal kuri bus skaiciuojamas galutinis pazymis
+ * @return Grazinamas studento galutinis pazymys
+ */
 double galutinis(const Stud &student, char pasirinkimas) {
     double ndPasirinkimas; 
     if (pasirinkimas == 'M' || pasirinkimas == 'm')
@@ -40,15 +54,25 @@ double galutinis(const Stud &student, char pasirinkimas) {
     return 0.4 * ndPasirinkimas + 0.6 * student.getEgz();
 };
 
-//funkcija, kuria ivedami studentu duomenys - vardas, pavarde, namu darbu skaicius (pagal si skaiciu suvedami nd pazymiai), ir egzamino pazymys
-void ivestiDuomenisRanka(vector<Stud> &student, int ndSkaicius) {
+/**
+ * @brief Funkcija, kuria ivedami studentu duomenys ranka - vardas, pavarde, namu darbu ir egzamino pazymiai
+ * @param student Studentu vektorius, kuriu duomenys ivedami
+ */
+
+void ivestiDuomenisRanka(vector<Stud> &student) {
+
     for (int i = 0; i < student.size(); i++) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz vektoriaus dydi (studentu skaiciu)
         cout << "Iveskite " << i + 1 << " studento duomenis: " << endl;
         cin >> student.at(i);
     }
 };
 
-//funkcija, kuri atsitiktinai generuoja studento pazymius (varda pavarde ivesti ranka)
+/**
+ * @brief Funkcija, kuri atsitiktinai generuoja studento pazymius (varda pavarde reikia ivesti ranka)
+ * @param student Studentu vektorius, kuriu duomenys generuojami
+ * @param ndSkaicius Namu darbu skaicius, kuri reikia ivesti
+ */
+
 void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
     
     for (int i = 0; i < student.size(); i++) { //iteruojame per visus studentus, tol kol i reiksme nebus didesne uz studentu skaiciu
@@ -70,7 +94,12 @@ void atsitiktiniaiPazymiai(vector<Stud> &student, double ndSkaicius) {
     }
 };
 
-//funkcija, kuri nuskaito faila
+/**
+ * @brief Funkcija, kuri nuskaito faile esancius studentu duomenis
+ * @param student Studentu vektorius, kuriu duomenys bus nuskaitomi
+ * @param failoPav Failo, kuri nuskaitome pavadinimas
+ */
+
 void nuskaitytiFaila(vector<Stud> &student, string failoPav) {
     ifstream file;
     try {
@@ -117,7 +146,12 @@ void nuskaitytiFaila(vector<Stud> &student, string failoPav) {
     }
 }
 
-//funkcija, kuri isspausdina studento varda, pavarde ir galutini vidurki 
+/**
+ * @brief Funkcija, kuri isspausdina studento varda, pavarde ir galutini vidurki (pagal vidurki arba mediana)
+ * @param student Studentu vektorius, kuriu duomenys bus isspausdinami
+ * @param pasirinkimas Galutinio pazymio skaiciavimo pasirinkimas (vidurkis arba mediana)
+ */
+
 void spausdinti(vector<Stud> &student, char pasirinkimas) {
     cout << left << setw(15) << "Vardas" << setw(15) << "Pavarde" 
     << setw(20) << (pasirinkimas == 'M' || pasirinkimas == 'm' ? "Galutinis (Med.)" : "Galutinis(Vid.)") << endl; //lenteles headeris - lygiuojame pagal kaire, set width 15 - tiek simboliu galima ivesti
@@ -131,8 +165,13 @@ void spausdinti(vector<Stud> &student, char pasirinkimas) {
     }
 };
 
+/**
+ * @brief Funckija, kuri isveda duomenis i faila
+ * @param student Studentu vektorius, kurio duomenys bus isvedami i faila 
+ * @param pasirinkimas Galutinio pazymio skaiciavimo pasirinkimas (vidurkis arba mediana)
+ * @param failoPav Kaip norime pavadinti isvedama faila
+ */
 
-//funckija, kuri isveda duomenis i faila
 void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav) {
     ofstream file(failoPav); //isvedama i faila pavadinimu rezultatai.txt
 
@@ -149,7 +188,12 @@ void isvestiFaila(vector<Stud> student, char pasirinkimas, string failoPav) {
     cout << "duomenys isvede i faila " << failoPav << endl;
 };
 
-//funkcija, kuri generuoja failus su atsitiktiniais duomenimis
+/**
+ * @brief Funkcija, kuri generuoja failus su atsitiktiniais duomenimis
+ * @param failoPav Kaip norime pavadinti generuojama faila
+ * @param studSk Skaicius studentu, kuriu duomenis norime atsitiktinai sugeneruoti
+ */
+
 void generuotiFailus(string failoPav, int studSk) {
     vector<string> vardai = {"Tomas", "Egle", "Andrius", "Monika", "Mantas", "Ruta", "Justas", "Ieva", "Darius", "Laura", "Emilija", "Igne", "Viktorija", "Rokas", "Gintaras"};
     vector<string> pavardes = {"Kairys", "Seskaukaite", "Pavilonis", "Zukauskaite", "Jankauskas", "Suminas", "Vasiliauskas", "Stankeviciene", "Petruskevicius", "Jakubavicius", "Abromaityte", "Katinas", "Zefyras", "Bublinskas", "Simenyte"};
@@ -197,7 +241,14 @@ void generuotiFailus(string failoPav, int studSk) {
     cout << "failas sugeneruotas." << endl;
 }
 
-//funkcija, kuri paskirsto studentus i saunuolius ir nevykelius
+/**
+ * @brief Funkcija, kuri paskirsto studentus i saunuolius ir nevykelius pagal ju pazymius
+ * @param studentai Studentu vektorius, kur laikomi visi studentai
+ * @param saunuoliai Saunuoliu vektorius, kuriame bus laikomi studentai su galutiniu pazymiu >= 5
+ * @param nevykeliai Nevykeliu vektorius, kuriame bus laikomi studentai su galutiniu pazymiu <= 5
+ * @param pasirinkimas Galutinio pazymio skaiciavimo pasirinkimas (vidurkis arba mediana)
+ */
+
 void paskirtytiStud(std::vector<Stud>& studentai, std::vector<Stud>& saunuoliai, std::vector<Stud>& nevykeliai, char pasirinkimas) {
     auto it = std::partition(studentai.begin(), studentai.end(), [&](const Stud& studentas) { 
         return galutinis(studentas, pasirinkimas) >= 5.0; });
@@ -207,10 +258,19 @@ void paskirtytiStud(std::vector<Stud>& studentai, std::vector<Stud>& saunuoliai,
 }
 
 
-//funkcija, kuri parodo dabartini laika
+/**
+ * @brief Funkcija, kuri parodo dabartini laika, naudoja chrono biblioteka
+ */
+
 std::chrono::steady_clock::time_point dabLaikas() {
     return std::chrono::steady_clock::now();
 };
+
+/**
+ * @brief Funkcija, kuri patikrina ar testas pavyko ar nepavyko
+ * @param a Logine reiksme, kuri parodo ar testas sekmingas (true) ar ne (false)
+ * @param pav Tekstas, kuris isvedamas su testo rezultatu
+ */
 
 void patikrinti(bool a, const string& pav) {
     if(a) {
@@ -221,6 +281,9 @@ void patikrinti(bool a, const string& pav) {
     }
 }
 
+/**
+ * @brief Funkcija, kuri demonstruoja Rule Of Three - kopijavimo konstruktoriu, kopijavimo priskyrimo konstruktoriu ir destruktoriu.
+ */
 void test() {
     Stud s;
     // suteikiamos reiksmes studentui
