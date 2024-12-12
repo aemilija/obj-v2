@@ -1,11 +1,22 @@
 #include "header.h"
 #include "Stud.h"
 
+/**
+ * @brief Funkcija, kuria yra vykdoma programa
+ * 1. Paklausia, ar norima testuoti konstruktorius ir operatorius
+ * 2. Paklausia, ar norima generuoti failus su atsitiktiniais duomenimis
+ * 3.Paklausia, ar norima ivesti duomenis ranka, generuoti atsitiktinai ar skaityti is failo
+ * 4. Paklausia, ar norima galutini pazymi skaiciuoti pagal vidurki arba mediana
+ * 5. Paklausia, ar norima skirstyti studentus i saunuolius ir nevykelius
+ * 6. Paklausia, ar norima surusiuoti studentus pagal varda, pavarde arba galutini pazymi
+ * 7. Paklausia, ar norima duomenis isvesti i terminala arba i faila
+ * 
+ * Visos programos metu yra skaiciuojama sparta, kuri isspausdinama gale
+ */
 int main() {
     auto programaStart = dabLaikas();
 
     int n;
-    int ndSkaicius;
     char ndPasirinkimas;
     char duomPasirinkimas;
     char outputPasirinkimas;
@@ -14,6 +25,7 @@ int main() {
     char skirstPasirinkimas;
     char testPasirinkimas;
     string failoPav;
+    int ndSkaicius;
 
     chrono::duration<double> nuskaitytiFailaDuration;
     chrono::duration<double> sortDuration;
@@ -91,7 +103,7 @@ int main() {
             }
         } while (n < 0);
 
-        ivestiDuomenisRanka(studentai, ndSkaicius);
+        ivestiDuomenisRanka(studentai);
     }
     else if (duomPasirinkimas == 'A' || duomPasirinkimas == 'a') {
         do {
@@ -251,26 +263,6 @@ int main() {
         }
     }
 
-    // else if (outputPasirinkimas == 'S' || outputPasirinkimas == 's') {
-        // vector<Stud> saunuoliai;
-        // vector<Stud> nevykeliai;
-
-        // auto paskirstytiStudStart = dabLaikas();
-        // paskirtytiStud(studentai, saunuoliai, nevykeliai, ndPasirinkimas);
-        // auto paskirstytiStudEnd = dabLaikas();
-        // paskirstytiStudDuration = paskirstytiStudEnd - paskirstytiStudStart;
-
-        // auto isvestiFailaSaunuoliaiStart = dabLaikas();
-        // isvestiFaila(saunuoliai, ndPasirinkimas, "saunuoliai.txt");
-        // auto isvestiFailaSaunuoliaiEnd = dabLaikas();
-        // isvestiFailaSaunuoliaiDuration = isvestiFailaSaunuoliaiEnd - isvestiFailaSaunuoliaiStart;
-
-        // auto isvestiFailaNevykeliaiStart = dabLaikas();
-        // isvestiFaila(nevykeliai, ndPasirinkimas, "nevykeliai.txt");
-        // auto isvestiFailaNevykeliaiEnd = dabLaikas();
-        // isvestiFailaNevykeliaiDuration = isvestiFailaNevykeliaiEnd - isvestiFailaNevykeliaiStart;
-
-    // }
     auto programaEnd = dabLaikas();
     chrono::duration<double> programaDuration = programaEnd - programaStart;
 
@@ -281,4 +273,6 @@ int main() {
     cout << fixed << setprecision(5) << "Failo "<< failoPav << " irasu nevykeliu irasymo i faila laikas: " << isvestiFailaNevykeliaiDuration.count() << " sekundes." << endl;
     cout << fixed << setprecision(5) << "Programos veikimas uztruko: " << programaDuration.count() << " sekundes." << endl;
 
+    system("pause");
+    
 };
