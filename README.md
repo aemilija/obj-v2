@@ -2,6 +2,8 @@
 
 Ši programa (suprogramuota C++ programavimo kalba) yra skirta apskaičiuoti studentų pažymius, remiantis jų namų darbų ir egzamino rezultatais.
 
+Sukurta doxygen dokumentacija (html ir latex formatu).
+
 <h2>
    <b>
       Struktūra:
