@@ -1,29 +1,29 @@
+#include "Stud.h"
+#define CATCH_CONFIG_MAIN
+#include "catch2/catch.hpp"
 
-#include "gtest/gtest.h"
-#include "studentai/Stud.h"  
-#include <googletest-main/googletest/include/gtest/gtest.h>
-#include <gtest.h>
-
-//testuojamas konstruktorius
-TEST(studentai, konstruktorius) {
+// testuojame konstruktorius
+TEST_CASE("konstruktorius", "[konstruktorius]") {
     Stud stud;
-    EXPECT_EQ(stud.getVardas(), "");
-    EXPECT_EQ(stud.getEgz(), 0);
+    REQUIRE(stud.getVardas() == "");
+    REQUIRE(stud.getPavarde() == "");
+    REQUIRE(stud.getEgz() == 0);
 }
 
-//testuojami getteriai ir setteriai
-TEST(studentai, getteriaiSetteriai) {
+//getteriai setteriai
+TEST_CASE("getteriai setteriai", "[getteria][setteriai]") {
     Stud stud;
     stud.setVardas("Emilija");
     stud.setPavarde("Abromaityte");
     stud.setEgz(10);
-    EXPECT_EQ(stud.getVardas(), "Emilija");
-    EXPECT_EQ(stud.getPavarde(), "Abromaityte");
-    EXPECT_EQ(stud.getEgz(), 10);
+
+    REQUIRE(stud.getVardas() == "Emilija");
+    REQUIRE(stud.getPavarde() == "Abromaityte");
+    REQUIRE(stud.getEgz() == 10);
 }
 
-//testuojamas kopijavimo konstruktorius
-TEST(studentai, kopijavimoKonstruktorius) {
+// kopijavimo konstruktorius
+TEST_CASE("kopijavimo konstruktorius", "[kopijavimo konstruktorius]") {
     Stud stud;
     stud.setVardas("Emilija");
     stud.setPavarde("Abromaityte");
@@ -32,14 +32,15 @@ TEST(studentai, kopijavimoKonstruktorius) {
     stud.setEgz(9);
 
     Stud stud2 = stud;
-    EXPECT_TRUE(stud2.getVardas() == stud.getVardas());
-    EXPECT_TRUE(stud2.getPavarde() == stud.getPavarde());
-    EXPECT_TRUE(stud2.getNd() == stud.getNd());
-    EXPECT_TRUE(stud2.getEgz() == stud.getEgz());
+
+    REQUIRE(stud2.getVardas() == stud.getVardas());
+    REQUIRE(stud2.getPavarde() == stud.getPavarde());
+    REQUIRE(stud2.getNd() == stud.getNd());
+    REQUIRE(stud2.getEgz() == stud.getEgz());
 }
 
-//testuojamas kopijavimo priskyrimo konstruktorius
-TEST(studentai, kopijavimoPriskyrimoKonstruktorius) {
+//kopijavimo priskyrimo operatoriaus
+TEST_CASE("kopijavimo priskyrimas", "[kopijavimo priskyrimas]") {
     Stud stud;
     stud.setVardas("Emilija");
     stud.setPavarde("Abromaityte");
@@ -49,8 +50,11 @@ TEST(studentai, kopijavimoPriskyrimoKonstruktorius) {
 
     Stud stud3;
     stud3 = stud;
-    EXPECT_TRUE(stud3.getVardas() == stud.getVardas());
-    EXPECT_TRUE(stud3.getPavarde() == stud.getPavarde());
-    EXPECT_TRUE(stud3.getNd() == stud.getNd());
-    EXPECT_TRUE(stud3.getEgz() == stud.getEgz());
-}    
+
+    REQUIRE(stud3.getVardas() == stud.getVardas());
+    REQUIRE(stud3.getPavarde() == stud.getPavarde());
+    REQUIRE(stud3.getNd() == stud.getNd());
+    REQUIRE(stud3.getEgz() == stud.getEgz());
+}
+
+
