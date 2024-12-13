@@ -2,7 +2,16 @@
 
 Ši programa (suprogramuota C++ programavimo kalba) yra skirta apskaičiuoti studentų pažymius, remiantis jų namų darbų ir egzamino rezultatais.
 
+<h2>
+   <b>
+      v2.0
+   </b>
+</h2>
+
 Sukurta doxygen dokumentacija (html ir latex formatu).
+Realizuoti Unit Testai, naudojant catch2 framework'ą. Buvo testuojamas konstruktorius, kopijavimo konstruktorius, kopijavimo priskyrimo operatorius ir getteriai, setteriai. Visi testai buvo sėkmingi.
+
+![image](https://github.com/user-attachments/assets/40fdb6e1-5480-44fb-bfd9-8052c9693a9d)
 
 <h2>
    <b>
